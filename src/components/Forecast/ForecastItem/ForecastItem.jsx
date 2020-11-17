@@ -5,6 +5,7 @@ import Icon from '../../UI/Icon';
 const Sdiv= styled.div`
     padding: 0.8rem;
     height: 16rem;
+    width: 15rem;
     min-width: 12rem;
     margin: 0.8rem;
     border-radius: 3px;
