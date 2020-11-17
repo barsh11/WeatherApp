@@ -13,12 +13,21 @@ svg{
 }
 `;
 
-const Icon= props => {
+// UI
+// loader
+// input
+// error msg
+// typography
+
+
+const Icon= ({color = 'red'}) => {
+    // make sure to add default values
+    // in case user not giving width as props - u should decide a default width
     return(
         <SReactSVG
         src= {`/assets/${props.name}.svg`}
         color= {props.color}
-        size= {props.size}
+        size= {props.size || ''}
         transform= {props.transform}
         className= {props.className}
         />

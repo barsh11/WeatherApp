@@ -8,12 +8,16 @@ import DailyReview from './components/DailyReview/DailyReview';
 import DailyExtra from './components/DailyExtra/DailyExtra';
 import Forecast from './components/Forecast/Forecast';
 
+
+// change scrollbar default style
+
+
 const Sdiv= styled.div`
   width: 100%;
   height: 100%;
   padding: 4rem;
 
-  background-image: url(${img});  
+  background-image: url(${img});  // change the image file to be in src/assets/images ===> bg image
   background-size: cover;
   background-position: center;
 
@@ -60,7 +64,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Sdiv className="App">
+      <Sdiv className="App"> // change naming
         <SLabel />
         <SInput />
         <SDailyReview 

@@ -24,20 +24,30 @@ const Sdiv= styled.div`
 `;
 
 const DailyExtra= props => {
+
+    // switch (label) {
+    //     case 'hight':
+    //     case 'low':
+    //         return <span class= "unit">&deg;</span>; 
+    //     case 'wind':
+    //         return <span class= "unit">mph</span>; 
+    //     case 'rain':
+    //         return <span class= "unit">%</span>; 
     
-    const renderUnit= label => {
+    //     default:
+    //         break;
+    // }
+    
+    const renderUnit= label => { // switch
         if(label === 'hight' || label === 'low'){
-            return <span class= "unit">&deg;</span>; 
         }
         if(label === 'wind'){
-            return <span class= "unit">mph</span>; 
         }
         if(label === 'rain'){
-            return <span class= "unit">%</span>; 
         }
     }
     
-    return (
+    return ( // every html element ===> styled.element
         <Sdiv
         className= {props.className}>
             <span id= "value">{props.value}<span>{renderUnit(props.label)}</span></span>

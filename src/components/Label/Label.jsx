@@ -8,7 +8,7 @@ const Sdiv= styled.div`
 `;
 
 
-const Label= props => {
+const Label= props => { // typography component
 
     return (
         <Sdiv

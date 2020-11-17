@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../../UI/Icon';
+import Icon from '../../UI/icons/Icon';
 
 const Sdiv= styled.div`
     padding: 0.8rem;

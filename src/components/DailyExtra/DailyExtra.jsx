@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import DailyExtraItem from './DailyExtraItem/DailyExtraItem';
 
-const Sdiv= styled.div`
+const Sdiv= styled.div` // naming
     width: 85%;
     height: 55%;
     background-color: rgba(255,255,255, 0.2);
@@ -22,14 +22,14 @@ const SDailyExtraItem= styled(DailyExtraItem)`
 `;
 
 const DailyExtra= props => {
-    const info= useState([
-        {value: '6', label: 'hight'},
-        {value: '3', label: 'low'},
-        {value: '3.1', label: 'wind'},
-        {value: '70', label: 'rain'},
-        {value: '6:40', label: 'sunrise'},
-        {value: '7:19', label: 'sunset'}
-    ])[0];
+    // const []= useState([
+    //     {value: '6', label: 'hight'},
+    //     {value: '3', label: 'low'},
+    //     {value: '3.1', label: 'wind'},
+    //     {value: '70', label: 'rain'},
+    //     {value: '6:40', label: 'sunrise'},
+    //     {value: '7:19', label: 'sunset'}
+    // ]); ===> going to come from props
 
     const renderExtraItem= (value, label) => {
         return <SDailyExtraItem
@@ -40,7 +40,7 @@ const DailyExtra= props => {
     return (
         <Sdiv
         className= {props.className}>
-            {info.map(el => renderExtraItem(el.value, el.label))}
+            {props.data.map(el => renderExtraItem(el.value, el.label))}
         </Sdiv>
     );
 }

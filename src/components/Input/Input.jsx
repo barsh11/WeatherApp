@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../UI/Icon';
+import Icon from '../UI/icons/Icon';
 
 const Sdiv= styled.div`
     display: flex;
@@ -33,7 +33,7 @@ const SIcon= styled(Icon)`
 
 
 
-const Input= props => {
+const Input= props => { // props of onchange
     return (
         <Sdiv
         className= {props.className}>
@@ -43,6 +43,7 @@ const Input= props => {
             size= "3rem" />
             <SInput 
             placeholder= "new york"
+            onchange={onchange}
             />
         </Sdiv>
     );

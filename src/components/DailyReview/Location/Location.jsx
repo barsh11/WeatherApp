@@ -15,9 +15,10 @@ const Location= props => {
     const currLocation= useState({city: props.city, country: props.country})[0];
 
     return (
-        <Sp>
-            {`${currLocation.city}, ${currLocation.country}`}
-        </Sp>
+        // <Sp> // change naming
+        //     {`${currLocation.city}, ${currLocation.country}`}
+        // </Sp>
+        <Typography size={3} text={`${currLocation.city}, ${currLocation.country}`} />
     );
 }
 

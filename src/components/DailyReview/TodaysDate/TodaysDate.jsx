@@ -9,7 +9,7 @@ const Sp= styled.p`
 
 
 const TodaysDate= props => {
-    const today= props.date;
+    const today= props.date; // https://momentjs.com/
     const day= today.toLocaleString('default', { weekday: 'long' });
     const date= today.getDate();
     const month= today.toLocaleString('default', { month: 'long' });
