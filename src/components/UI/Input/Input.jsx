@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '../Icon/Icon';
 
-const Sdiv= styled.div`
+const SInputWrapper= styled.div`
     display: flex;
     align-items: center;
 
@@ -20,6 +20,8 @@ const SInput= styled.input`
     &::placeholder{
         color: #8c918d;
         font-size: 2.5rem;
+
+        transform: translateY(0.4rem);
     }
 
     &:focus{
@@ -35,7 +37,7 @@ const SIcon= styled(Icon)`
 
 const Input= props => {
     return (
-        <Sdiv
+        <SInputWrapper
         className= {props.className}>
             <SIcon 
             name= "search"
@@ -43,8 +45,10 @@ const Input= props => {
             size= "3rem" />
             <SInput 
             placeholder= "new york"
+            onChange= {props.changed}
+            value= {props.value}
             />
-        </Sdiv>
+        </SInputWrapper>
     );
 }
 

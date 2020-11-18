@@ -9,7 +9,7 @@ const CurrLocation= props => {
         typographyType= 'heading2'
         bold= {true}
         shadow= {true}
-        text= {`${props.city}, ${props.country}`}
+        text= {`${props.data.city}, ${props.data.country}`}
         />
     );
 }

@@ -4,7 +4,7 @@ import CurrWeather from '../CurrWeather/CurrWeather';
 import CurrDate from '../CurrDate/CurrDate';
 import CurrLocation from '../CurrLocation/CurrLocation';
 
-const Sdiv= styled.div`
+const SCurrConditions= styled.div`
     display: flex;
     flex-direction: column;
 
@@ -14,24 +14,23 @@ const Sdiv= styled.div`
 const SCurrWeather= styled(CurrWeather)`
     align-self: center;
     
-    margin-right: -30rem;
+    margin-right: -13rem;
 `;
 
-const DailyReview= props => {
+const CurrConditions= props => {
 
     return (
-        <Sdiv
+        <SCurrConditions
         className= {props.className}>
             <CurrLocation 
-            city= {props.city}
-            country= {props.country}/>
-            <CurrDate 
-            date= {props.date}/>
+            data= {props.data && {city: props.data.city, country: props.data.country}}
+            />
+            <CurrDate />
             <SCurrWeather
-            deg= {props.deg}
-            description= {props.description} />
-        </Sdiv>
+            data= {props.data && {deg: props.data.deg, description: props.data.description}}
+            />
+        </SCurrConditions>
     );
 }
 
-export default DailyReview;
+export default CurrConditions;

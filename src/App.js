@@ -4,7 +4,7 @@ import GlobalStyle from './style/globalStyle';
 import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
 import Input from './components/UI/Input/Input';
-import DailyReview from './components/DailyReview/DailyReview';
+import DailyReview from './components/CurrConditions/CurrConditions';
 import CurrParameters from './components/CurrParameters/CurrParameters';
 import Forecast from './components/Forecast/Forecast';
 
@@ -67,11 +67,12 @@ function App() {
         text= 'weather app'/>
         <SInput />
         <SDailyReview 
-          city= 'New-York'
-          country= 'US'
-          date= {new Date()}
-          deg= '5'
-          description= 'overcast cloud'/>
+        data= {{
+                city: 'New-York',
+                country: 'US',
+                deg: '5',
+                description: 'overcast clouds'
+        }}/>
         <SCurrParameters
             data= { [{value: '6', label: 'hight'},
             {value: '3', label: 'low'},
