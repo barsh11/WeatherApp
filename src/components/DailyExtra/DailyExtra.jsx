@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import DailyExtraItem from '../DailyExtraItem/DailyExtraItem';
+import CurrParameter from '../CurrParameter/CurrParameter';
 
 const Sdiv= styled.div`
     width: 85%;
@@ -17,7 +17,7 @@ const Sdiv= styled.div`
     grid-gap: 1rem;
 `;
 
-const SDailyExtraItem= styled(DailyExtraItem)`
+const SDailyExtraItem= styled(CurrParameter)`
 
 `;
 
