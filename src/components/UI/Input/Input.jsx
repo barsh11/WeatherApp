@@ -33,8 +33,6 @@ const SIcon= styled(Icon)`
     transform: translate(4.5rem, 0.3rem);
 `;
 
-
-
 const Input= props => {
     return (
         <SInputWrapper
