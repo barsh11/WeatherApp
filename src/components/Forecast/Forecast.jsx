@@ -18,14 +18,10 @@ const SForecast= styled.div`
     overflow-x: scroll;
 `;
 
-const SForecastItem= styled(ForecastItem)`
-    
-`;
-
 const Forecast= props => {
 
     const renderForecastItem= ({date, time, description, value}) => {
-        return <SForecastItem
+        return <ForecastItem
                 data= {{date: date, time: time, description: description, value: value}}/>
     }
 

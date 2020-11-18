@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DailyMain from '../DailyMain/DailyMain';
+import CurrWeather from '../CurrWeather/CurrWeather';
 import CurrDate from '../CurrDate/CurrDate';
 import CurrLocation from '../CurrLocation/CurrLocation';
 
@@ -11,7 +11,7 @@ const Sdiv= styled.div`
     margin: 4rem;
 `;
 
-const SDailyMain= styled(DailyMain)`
+const SCurrWeather= styled(CurrWeather)`
     align-self: center;
     
     margin-right: -30rem;
@@ -27,7 +27,7 @@ const DailyReview= props => {
             country= {props.country}/>
             <CurrDate 
             date= {props.date}/>
-            <SDailyMain
+            <SCurrWeather
             deg= {props.deg}
             description= {props.description} />
         </Sdiv>
