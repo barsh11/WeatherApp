@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyle } from './style/globalStyle';
+import GlobalStyle from './style/globalStyle';
 import img from './assets/coverPhoto.jpg';
 import Label from './components/Label/Label';
 import Input from './components/UI/Input/Input';
