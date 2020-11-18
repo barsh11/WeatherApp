@@ -5,7 +5,7 @@ import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
 import Input from './components/UI/Input/Input';
 import DailyReview from './components/DailyReview/DailyReview';
-import DailyExtra from './components/DailyExtra/DailyExtra';
+import CurrParameters from './components/CurrParameters/CurrParameters';
 import Forecast from './components/Forecast/Forecast';
 
 const Sdiv= styled.div`
@@ -45,7 +45,7 @@ const SDailyReview= styled(DailyReview)`
   justify-self: start;
 `;
 
-const SDailyExtra= styled(DailyExtra)`
+const SCurrParameters= styled(CurrParameters)`
   grid-row: 3 / span 1;
   grid-column: 2 / span 1;
 `;
@@ -72,7 +72,13 @@ function App() {
           date= {new Date()}
           deg= '5'
           description= 'overcast cloud'/>
-        <SDailyExtra />
+        <SCurrParameters
+            data= { [{value: '6', label: 'hight'},
+            {value: '3', label: 'low'},
+            {value: '3.1', label: 'wind'},
+            {value: '70', label: 'rain'},
+            {value: '6:40', label: 'sunrise'},
+            {value: '7:19', label: 'sunset'}] }/>
         <SForecast />
       </Sdiv> 
     </>
