@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import Location from './Location';
+import CurrLocation from './CurrLocation';
 
 export default{
-    title: 'Location',
-    component: Location
+    title: 'CurrLocation',
+    component: CurrLocation
 }
 
-const Template= args => <Location {...args} />
+const Template= args => <CurrLocation {...args} />
 
 export const Default= Template.bind({});
 Default.args={

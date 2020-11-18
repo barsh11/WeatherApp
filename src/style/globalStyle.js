@@ -43,3 +43,5 @@ export const GlobalStyle = createGlobalStyle`
         ${bodyStyles}
     }
 `;
+
+export default GlobalStyle;

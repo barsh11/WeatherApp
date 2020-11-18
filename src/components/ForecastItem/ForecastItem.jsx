@@ -1,27 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../../UI/Icon';
+import Typography from '../UI/Typography/Typography';
+import Icon from '../UI/Icon/Icon';
 
-const Sdiv= styled.div`
+const SForcestItemWrapper= styled.div`
     padding: 0.8rem;
     height: 16rem;
     width: 15rem;
     min-width: 12rem;
     margin: 0.8rem;
     border-radius: 3px;
-    color: white;
-    font-size: 2rem;
     background-color: rgba(255, 255, 255, 0.2);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    & span{
-        display: block;
-        margin: 2px;
-    }
 `;
 
 const SIcon= styled(Icon)`
@@ -32,15 +26,21 @@ const SIcon= styled(Icon)`
 const ForecastItem= props => {
     
     return (
-        <Sdiv
+        <SForcestItemWrapper
         className= {props.className}>
-            <span>{props.date}</span>
-            <span>{props.hour}</span>
+            <Typography
+            capitalize= {false}
+            text= {props.data.date} />
+            <Typography
+            capitalize= {false}
+            text= {props.data.time} />
             <SIcon
-            name= {props.description}
+            name= {props.data.description}
             size= "2rem"/>
-            <span>{props.value}&deg;</span>
-        </Sdiv>
+            <Typography
+            capitalize= {false}
+            text= {props.data.value + '°'} />
+        </SForcestItemWrapper>
     );
 }
 

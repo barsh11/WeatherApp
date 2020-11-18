@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyle } from './shared/global';
-import img from './2794169.jpg';
-import Label from './components/Label/Label';
-import Input from './components/Input/Input';
-import DailyReview from './components/DailyReview/DailyReview';
-import DailyExtra from './components/DailyExtra/DailyExtra';
+import GlobalStyle from './style/globalStyle';
+import Typography from './components/UI/Typography/Typography';
+import img from './assets/coverPhoto.jpg';
+import Input from './components/UI/Input/Input';
+import DailyReview from './components/CurrConditions/CurrConditions';
+import CurrParameters from './components/CurrParameters/CurrParameters';
 import Forecast from './components/Forecast/Forecast';
 
 const Sdiv= styled.div`
@@ -25,7 +25,7 @@ const Sdiv= styled.div`
   justify-items: center;
 `;
 
-const SLabel= styled(Label)`
+const SLabel= styled(Typography)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 
@@ -45,7 +45,7 @@ const SDailyReview= styled(DailyReview)`
   justify-self: start;
 `;
 
-const SDailyExtra= styled(DailyExtra)`
+const SCurrParameters= styled(CurrParameters)`
   grid-row: 3 / span 1;
   grid-column: 2 / span 1;
 `;
@@ -60,17 +60,41 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Sdiv className="App">
-        <SLabel />
+      <Sdiv>
+        <SLabel 
+        typographyType= 'heading3'
+        uppercase= {true}
+        text= 'weather app'/>
         <SInput />
         <SDailyReview 
-          city= 'New-York'
-          country= 'US'
-          date= {new Date()}
-          deg= '5'
-          description= 'overcast cloud'/>
-        <SDailyExtra />
-        <SForecast />
+        data= {{
+                city: 'New-York',
+                country: 'US',
+                deg: '5',
+                description: 'overcast clouds'
+        }}/>
+        <SCurrParameters
+            data= { [{value: '6', label: 'hight'},
+            {value: '3', label: 'low'},
+            {value: '3.1', label: 'wind'},
+            {value: '70', label: 'rain'},
+            {value: '6:40', label: 'sunrise'},
+            {value: '7:19', label: 'sunset'}] }/>
+        <SForecast 
+        data= { [
+          {date: '04.01', time: '06:00', description: 'cloudy', value: '4'},
+          {date: '04.01', time: '09:00', description: 'cloudy', value: '3'},
+          {date: '04.01', time: '12:00', description: 'cloudy', value: '2'},
+          {date: '04.01', time: '15:00', description: 'cloudy', value: '5'},
+          {date: '04.01', time: '18:00', description: 'cloudy', value: '8'},
+          {date: '04.01', time: '21:00', description: 'cloudy', value: '9'},
+          {date: '04.02', time: '00:00', description: 'cloudy', value: '7'},
+          {date: '04.02', time: '03:00', description: 'cloudy', value: '5'},
+          {date: '04.02', time: '05:00', description: 'cloudy', value: '4'},
+          {date: '04.02', time: '07:00', description: 'cloudy', value: '5'},
+          {date: '04.02', time: '09:00', description: 'cloudy', value: '6'},
+          {date: '04.02', time: '13:00', description: 'cloudy', value: '6'}
+      ] }/>
       </Sdiv> 
     </>
   );

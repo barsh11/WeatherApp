@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import TodaysDate from './TodaysDate';
+import CurrDate from './CurrDate';
 
 export default{
-    title: 'TodaysDate',
-    component: TodaysDate
+    title: 'CurrDate',
+    component: CurrDate
 }
 
-const Template= args => <TodaysDate {...args} />
+const Template= args => <CurrDate {...args} />
 
 export const Default= Template.bind({});
 Default.args={
