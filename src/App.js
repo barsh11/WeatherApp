@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyle } from './shared/global';
-import img from './2794169.jpg';
+import { GlobalStyle } from './style/globalStyle';
+import img from './assets/coverPhoto.jpg';
 import Label from './components/Label/Label';
-import Input from './components/Input/Input';
+import Input from './components/UI/Input/Input';
 import DailyReview from './components/DailyReview/DailyReview';
 import DailyExtra from './components/DailyExtra/DailyExtra';
 import Forecast from './components/Forecast/Forecast';

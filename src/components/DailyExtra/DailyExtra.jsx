@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import DailyExtraItem from './DailyExtraItem/DailyExtraItem';
+import DailyExtraItem from '../DailyExtraItem/DailyExtraItem';
 
 const Sdiv= styled.div`
     width: 85%;

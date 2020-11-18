@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import DailyMain from './DailyMain/DailyMain';
-import TodaysDate from './TodaysDate/TodaysDate';
-import Location from './Location/Location';
+import DailyMain from '../DailyMain/DailyMain';
+import TodaysDate from '../TodaysDate/TodaysDate';
+import Location from '../Location/Location';
 
 const Sdiv= styled.div`
     display: flex;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ForecastItem from './ForecastItem/ForecastItem';
+import ForecastItem from '../ForecastItem/ForecastItem';
 
 const Sdiv= styled.div`
     display: flex;

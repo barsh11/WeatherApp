@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Icon from '../../UI/Icon';
+import Icon from '../UI/Icon/Icon';
 
 const Sdiv= styled.div`
     display: flex;
