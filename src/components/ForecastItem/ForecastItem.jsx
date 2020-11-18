@@ -29,15 +29,18 @@ const ForecastItem= props => {
         <SForcestItemWrapper
         className= {props.className}>
             <Typography
+            typographyType= 'body'
             capitalize= {false}
             text= {props.data.date} />
             <Typography
+            typographyType= 'body'
             capitalize= {false}
             text= {props.data.time} />
             <SIcon
             name= {props.data.description}
             size= "2rem"/>
             <Typography
+            typographyType= 'body'
             capitalize= {false}
             text= {props.data.value + '°'} />
         </SForcestItemWrapper>

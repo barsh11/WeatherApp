@@ -15,11 +15,11 @@ const setTypographySize= (type) => {
             return `
             3rem;
             `;
-        case 'description1':
+        case 'body':
             return `
             2.2rem;
             `;
-        case 'description2': 
+        case 'description': 
             return `
             2rem;
             `;
