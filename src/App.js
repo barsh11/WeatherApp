@@ -4,13 +4,14 @@ import GlobalStyle from './style/globalStyle';
 import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
 import Input from './components/UI/Input/Input';
-import DailyReview from './components/CurrConditions/CurrConditions';
+import CurrConditions from './components/CurrConditions/CurrConditions';
 import CurrParameters from './components/CurrParameters/CurrParameters';
 import Forecast from './components/Forecast/Forecast';
 
 const Sdiv= styled.div`
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   padding: 4rem;
 
   background-image: url(${img});  
@@ -23,6 +24,16 @@ const Sdiv= styled.div`
   grid-gap: 1rem;
   align-items: center;
   justify-items: center;
+
+  @media only screen and (max-width: 56.25em){
+    grid-template-rows: 1fr 1fr 3.5fr 2.5fr 2fr;
+    grid template-columns: 1fr;
+  }
+
+  @media only screen and (max-width: 31.25em){
+    grid-template-rows: 0.3fr 0.5fr 2fr 1.5fr 1fr;
+    grid-gap: 0.8rem;
+  }
 `;
 
 const SLabel= styled(Typography)`
@@ -38,21 +49,35 @@ const SInput= styled(Input)`
   grid-column: 1 / -1;
 `;
 
-const SDailyReview= styled(DailyReview)`
+const SCurrConditions= styled(CurrConditions)`
   grid-row: 3 / span 1;
   grid-column: 1 / span 1;
 
   justify-self: start;
+
+  @media only screen and (max-width: 56.25em){
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
 `;
 
 const SCurrParameters= styled(CurrParameters)`
   grid-row: 3 / span 1;
   grid-column: 2 / span 1;
+
+  @media only screen and (max-width: 56.25em){
+    grid-row: 4 / span 1;
+    grid-column: 1 / -1;
+  }
 `;
 
 const SForecast= styled(Forecast)`
   grid-row: 4 / -1;
   grid-column: 1 / -1;
+
+  @media only screen and (max-width: 56.25em){
+    grid-row: 5 / -1;
+  }
 `;
 
 function App() {
@@ -66,7 +91,7 @@ function App() {
         uppercase= {true}
         text= 'weather app'/>
         <SInput />
-        <SDailyReview 
+        <SCurrConditions
         data= {{
                 city: 'New-York',
                 country: 'US',

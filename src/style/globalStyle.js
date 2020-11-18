@@ -19,6 +19,10 @@ export const htmlStyles = css`
     box-sizing: border-box;
 
     font-size: 62.5%; /*1rem==10px / 10px/16px=87.5%*/
+
+    @media only screen and (max-width: 31.25em){
+        font-size: 56.25%; /*1rem==9px / 9px/16px=56.25%*/
+    }
 `;
 
 export const generalStyles= css`
