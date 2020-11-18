@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import DailyMain from '../DailyMain/DailyMain';
-import TodaysDate from '../TodaysDate/TodaysDate';
+import CurrDate from '../CurrDate/CurrDate';
 import CurrLocation from '../CurrLocation/CurrLocation';
 
 const Sdiv= styled.div`
@@ -25,7 +25,7 @@ const DailyReview= props => {
             <CurrLocation 
             city= {props.city}
             country= {props.country}/>
-            <TodaysDate 
+            <CurrDate 
             date= {props.date}/>
             <SDailyMain
             deg= {props.deg}

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import TodaysDate from './TodaysDate';
+import TodaysDate from './CurrDate';
 
 export default{
     title: 'TodaysDate',
