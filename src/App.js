@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import GlobalStyle from './style/globalStyle';
+import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
-import Label from './components/Label/Label';
 import Input from './components/UI/Input/Input';
 import DailyReview from './components/DailyReview/DailyReview';
 import DailyExtra from './components/DailyExtra/DailyExtra';
@@ -25,7 +25,7 @@ const Sdiv= styled.div`
   justify-items: center;
 `;
 
-const SLabel= styled(Label)`
+const SLabel= styled(Typography)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 
@@ -60,8 +60,11 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Sdiv className="App">
-        <SLabel />
+      <Sdiv>
+        <SLabel 
+        typographyType= 'heading3'
+        uppercase= {true}
+        text= 'weather app'/>
         <SInput />
         <SDailyReview 
           city= 'New-York'

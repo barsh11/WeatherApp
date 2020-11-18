@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import DailyMain from '../DailyMain/DailyMain';
 import TodaysDate from '../TodaysDate/TodaysDate';
-import Location from '../Location/Location';
+import CurrLocation from '../CurrLocation/CurrLocation';
 
 const Sdiv= styled.div`
     display: flex;
@@ -22,7 +22,7 @@ const DailyReview= props => {
     return (
         <Sdiv
         className= {props.className}>
-            <Location 
+            <CurrLocation 
             city= {props.city}
             country= {props.country}/>
             <TodaysDate 

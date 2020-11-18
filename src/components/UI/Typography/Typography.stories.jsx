@@ -13,6 +13,7 @@ export const TypographyInstance= Template.bind({});
 TypographyInstance.args={
     typographyType: 'heading3',
     color: 'white',
+    bold: false,
     capitalize: true,
     uppercase: true,
     shadow: false,
