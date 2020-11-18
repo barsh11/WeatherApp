@@ -11,8 +11,10 @@ const Template= args => <ForecastItem {...args} />
 
 export const Default= Template.bind({});
 Default.args={
+    data: {
     date: '04.01',
-    hour: '6:00',
+    time: '6:00',
     description: 'cloudy',
-    value: '4'
+    value: '4',
+    }
 }
