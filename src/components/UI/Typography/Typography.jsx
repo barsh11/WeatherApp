@@ -15,13 +15,17 @@ const setTypographySize= (type) => {
             return `
             3rem;
             `;
-        case 'description':
+        case 'description1':
             return `
             2.2rem;
             `;
-        default: //caption
+        case 'description2': 
             return `
             2rem;
+            `;
+        default:
+            return`
+            1.5rem;
             `;
     }
 }
