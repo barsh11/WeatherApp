@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography/Typography';
 import Icon from '../Icon/Icon';
+import Button from '../Button/Button';
 
 const SErrorMessageWrapper= styled.div`
     display: flex;
@@ -9,8 +10,10 @@ const SErrorMessageWrapper= styled.div`
     align-items: center;
 
     background-color: white;
-    width: 40%;
-    height: 400px; /*to be changed*/
+    width: 20%;
+    height: 500px; /*to be changed*/
+
+    box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
 `;
 
 const SIconWrapper= styled.div`
@@ -21,7 +24,11 @@ const SIconWrapper= styled.div`
 
     background-color: #236f82;
     width: 100%;
-    height: 60%;
+    height: 55%;
+`;
+
+const SIcon= styled(Icon)`
+    margin-bottom: 2rem;
 `;
 
 const SErrorDescription= styled.div`
@@ -39,7 +46,7 @@ const ErrorMessage= props => {
     return (
         <SErrorMessageWrapper>
             <SIconWrapper>
-                <Icon
+                <SIcon
                 name= 'error'
                 color= 'white'
                 size= '12rem'
@@ -55,7 +62,7 @@ const ErrorMessage= props => {
                 typographyType= 'caption'
                 color= '#8c918d'
                 text= {props.message}/>
-                <button>Retry</button> {/* to be changed */}
+                <Button>Retry</Button> {/* to be changed */}
             </SErrorDescription>
         </SErrorMessageWrapper>
     );
