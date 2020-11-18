@@ -15,6 +15,14 @@ const SCurrParametersWrapper= styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     grid-gap: 1rem;
+
+    @media only screen and (max-width: 56.25em){
+        height: 70%;
+    }
+
+    @media only screen and (max-width: 31.25em){
+        width: 95%;
+    }
 `;
 
 const CurrParameters= props => {

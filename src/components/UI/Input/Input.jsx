@@ -7,6 +7,14 @@ const SInputWrapper= styled.div`
     align-items: center;
 
     width: 50%;
+
+    @media only screen and (max-width: 56.25em){
+        width: 65%;
+    }
+
+    @media only screen and (max-width: 31.25em){
+        width: 90%;
+    }
 `;
 
 const SInput= styled.input`

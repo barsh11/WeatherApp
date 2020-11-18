@@ -15,6 +15,10 @@ const SCurrWeather= styled(CurrWeather)`
     align-self: center;
     
     margin-right: -13rem;
+
+    @media only screen and (max-width: 75em){
+        margin-right: 0;
+    }
 `;
 
 const CurrConditions= props => {
