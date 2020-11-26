@@ -29,11 +29,11 @@ const CurrWeather= props => {
                 <Typography
                     className= {props.className}
                     typographyType= 'heading1'
-                    text= {props.data && (props.data.deg + '°')} />
+                    text= {(props.data?.deg + '°')} />
                 <Typography 
                     className= {props.className}
                     typographyType= 'heading3'
-                    text= {props.data && props.data.description}/>
+                    text= {props.data?.description}/>
             </SCurrWeather>
         </SCurrWeatherWrapper>
     );

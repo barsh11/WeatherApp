@@ -36,7 +36,7 @@ const CurrParameters= props => {
     return (
         <SCurrParametersWrapper
         className= {props.className}>
-            {props.data && props.data.map(el => renderCurrParameter(el.value, el.label))}
+            {props.data?.map(el => renderCurrParameter(el.value, el.label))}
         </SCurrParametersWrapper>
     );
 }

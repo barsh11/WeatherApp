@@ -33,7 +33,7 @@ const Forecast= props => {
             shadow= {true}
             text= 'forecast'/>
             <SForecast>
-                {props.data && props.data.map(el => renderForecastItem({date: el.date, time: el.time, description: el.description, value: el.value}))}
+                {props.data?.map(el => renderForecastItem({date: el.date, time: el.time, description: el.description, value: el.value}))}
             </SForecast>
         </SForecastWrapper>
     );
