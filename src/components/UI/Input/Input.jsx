@@ -21,6 +21,7 @@ const SInput= styled.input`
     border: none;
     
     width: 100%;
+    font-size: 2.2rem;
     border-radius: 5rem;
     padding: 2.5rem 4.5rem 2.5rem 5rem;
     box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
@@ -50,7 +51,7 @@ const Input= props => {
             color= "#ccc"
             size= "3rem" />
             <SInput 
-            placeholder= "new york"
+            placeholder= "Search for a city..."
             type= "search"
             onChange= {props.changed}
             value= {props.value}

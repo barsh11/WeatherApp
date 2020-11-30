@@ -5,7 +5,7 @@ import useDebounce from '../../hooks/useDebounce';
 import Input from "../../components/UI/Input/Input";
 
 const SSearch= styled.form`
-    width: 80%;
+    min-width: 80%;
 
     position: relative;
 `;
@@ -41,7 +41,8 @@ const Search = (props) => {
     const [results, setResults]= useState([]);
     const [isSearching, setIsSearching]= useState(false);
     const [location, setLocation]= useState(null);
-    
+    const [isShown, setIsShown]= useState(false);
+
     const debouncedSearchInput= useDebounce(searchInput, 500); 
 
     useEffect(() => {
@@ -65,7 +66,7 @@ const Search = (props) => {
                         }
                     }
                     setResults(limitedResults);
-                    console.log(results);
+                    setIsShown(true);
                 })
                 .catch(err => {
                     console.log(err); // to be exchanged with the error modal
@@ -83,10 +84,17 @@ const Search = (props) => {
         }
     }, [location])
 
+    useEffect(() => {
+        if(!isShown){
+            setSearchInput('');
+        }
+    }, [isShown])
+
     const clickHandler= (chosenLocationIndex) => {
         if(results.length>0){
             const chosenLocation= {...results[chosenLocationIndex]};
             setLocation({locationKey: chosenLocation.Key, city: chosenLocation.LocalizedName, countryId: chosenLocation.Country.ID});
+            setIsShown(false);
         }
     }
 
@@ -109,7 +117,7 @@ const Search = (props) => {
             <SInput 
             changed= {e => setSearchInput(e.target.value)}
             value= {searchInput}/>
-            {content}
+            {isShown && content}
         </SSearch>
     );
 };
