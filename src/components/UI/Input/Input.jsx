@@ -6,7 +6,7 @@ const SInputWrapper= styled.div`
     display: flex;
     align-items: center;
 
-    width: 50%;
+    width: 60%;
 
     @media only screen and (max-width: 56.25em){
         width: 65%;
@@ -22,7 +22,7 @@ const SInput= styled.input`
     
     width: 100%;
     border-radius: 5rem;
-    padding: 2.5rem 5.5rem 2.5rem 6rem;
+    padding: 2.5rem 4.5rem 2.5rem 5rem;
     box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
     
     &::placeholder{

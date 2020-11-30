@@ -6,8 +6,8 @@ import CurrParameters from '../../components/CurrParameters/CurrParameters';
 import Forecast from '../../components/Forecast/Forecast';
 
 const SWeatherManager= styled.div`
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
     
   display: grid;
   grid-template-rows: 1fr 3.5fr 2fr;
@@ -65,16 +65,26 @@ const SForecast= styled(Forecast)`
 
 const WeatherManager= (props) => {
   const [isSearching, setIsSearching]= useState(false);
+  const [locationKey, setLocationKey]= useState('');
+  const [city, setCity]= useState('');
+  const [country, setCountry]= useState('');
 
-  const searchFillHandler= (isSearching, locationData) => {
+  const onSearchHandler= (inSearch) => {
+    setIsSearching(inSearch);
+  }
 
+  const onLocationChoiceHandler= (locationData) => {
+    setLocationKey(locationData.locationKey);
+    setCity(locationData.city);
+    setCountry(locationData.country);
   }
   
   return (
       <SWeatherManager 
       className={props.className}>
         <SSearch 
-        searchFill= {searchFillHandler}/>
+        onSearch= {onSearchHandler}
+        onLocationChoice= {onLocationChoiceHandler}/>
         <SCurrConditions
         data= {{
                 city: 'New-York',
