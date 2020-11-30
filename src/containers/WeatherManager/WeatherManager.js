@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axiosLocation from '../../services/axios-locations';
 import Input from '../../components/UI/Input/Input';
 import CurrConditions from '../../components/CurrConditions/CurrConditions'
 import CurrParameters from '../../components/CurrParameters/CurrParameters';
@@ -64,7 +65,7 @@ const SForecast= styled(Forecast)`
 `;
 
 const WeatherManager= (props) => {
-  
+
   
   return (
       <SWeatherManager 
