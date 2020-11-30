@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axiosLocation from '../../services/axios-locations';
-import Input from '../../components/UI/Input/Input';
+import Search from '../Search/Search';
 import CurrConditions from '../../components/CurrConditions/CurrConditions'
 import CurrParameters from '../../components/CurrParameters/CurrParameters';
 import Forecast from '../../components/Forecast/Forecast';
@@ -28,7 +27,7 @@ const SWeatherManager= styled.div`
   }
 `;
 
-const SInput= styled(Input)`
+const SSearch= styled(Search)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 `;
@@ -65,12 +64,17 @@ const SForecast= styled(Forecast)`
 `;
 
 const WeatherManager= (props) => {
+  const [isSearching, setIsSearching]= useState(false);
 
+  const searchFillHandler= (isSearching, locationData) => {
+
+  }
   
   return (
       <SWeatherManager 
       className={props.className}>
-        <SInput />
+        <SSearch 
+        searchFill= {searchFillHandler}/>
         <SCurrConditions
         data= {{
                 city: 'New-York',
