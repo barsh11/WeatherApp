@@ -51,6 +51,7 @@ const Input= props => {
             size= "3rem" />
             <SInput 
             placeholder= "new york"
+            type= "search"
             onChange= {props.changed}
             value= {props.value}
             />
