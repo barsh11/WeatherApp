@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Search from '../Search/Search';
 import CurrManager from '../CurrManager/CurrManager';
+import DailyManager from '../DailyManager/DailyManager';
 import CurrParameters from '../../components/CurrParameters/CurrParameters';
 import Forecast from '../../components/Forecast/Forecast';
 
@@ -44,7 +45,7 @@ const SCurrManager= styled(CurrManager)`
   }
 `;
 
-const SCurrParameters= styled(CurrParameters)`
+const SDailyManager= styled(DailyManager)`
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
 
@@ -91,13 +92,8 @@ const WeatherManager= (props) => {
                 city: city,
                 country: country
         }}/>
-        <SCurrParameters
-            data= { [{value: '6', label: 'hight'},
-            {value: '3', label: 'low'},
-            {value: '3.1', label: 'wind'},
-            {value: '70', label: 'rain'},
-            {value: '6:40', label: 'sunrise'},
-            {value: '7:19', label: 'sunset'}] }/>
+        <SDailyManager
+        locationKey= {locationKey}/>
         <SForecast 
         data= { [
           {date: '04.01', time: '06:00', description: 'cloudy', value: '4'},
