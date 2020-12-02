@@ -12,7 +12,7 @@ const SErrorMessageWrapper= styled.div`
     background-color: white;
     width: 20%;
     height: 500px; /*to be changed*/
-
+    z-index: 101;
     box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
 `;
 
