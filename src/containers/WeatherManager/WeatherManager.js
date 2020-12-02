@@ -4,6 +4,7 @@ import Search from '../Search/Search';
 import CurrManager from '../CurrManager/CurrManager';
 import DailyManager from '../DailyManager/DailyManager';
 import ForecastManager from '../ForecastManager/ForcastManager';
+import Loader from '../../components/UI/Loader/Loader';
 
 const SWeatherManager= styled.div`
   height: 100%;
@@ -63,6 +64,11 @@ const SForecastManager= styled(ForecastManager)`
   }
 `;
 
+const SLoader= styled(Loader)`
+  grid-row: 2 / span 1;
+  grid-column: 1 / -1;
+`;
+
 const WeatherManager= (props) => {
   const [error, setError]= useState(false);
   const [locationKey, setLocationKey]= useState('');
@@ -94,17 +100,18 @@ const WeatherManager= (props) => {
       className={props.className}>
         <SSearch 
         onLocationChoice= {onLocationChoiceHandler}/>
-        <SCurrManager
+        {!locationKey ? <SLoader /> :
+        [<SCurrManager
         locationKey= {locationKey}
         onError= {onErrorHandler}
         data= {{
                 city: city,
                 country: country
-        }}/>
+        }}/>,
         <SDailyManager
-        locationKey= {locationKey}/>
+        locationKey= {locationKey}/>,
         <SForecastManager 
-        locationKey= {locationKey}/>
+        locationKey= {locationKey}/>]}
       </SWeatherManager>
   );
 }
