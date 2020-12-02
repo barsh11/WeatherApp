@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axiosLocation from '../../services/axios-locations';
-import Input from '../../components/UI/Input/Input';
+import Search from '../Search/Search';
 import CurrConditions from '../../components/CurrConditions/CurrConditions'
 import CurrParameters from '../../components/CurrParameters/CurrParameters';
 import Forecast from '../../components/Forecast/Forecast';
+import Loader from '../../components/UI/Loader/Loader';
 
 const SWeatherManager= styled.div`
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
     
   display: grid;
   grid-template-rows: 1fr 3.5fr 2fr;
@@ -28,7 +28,7 @@ const SWeatherManager= styled.div`
   }
 `;
 
-const SInput= styled(Input)`
+const SSearch= styled(Search)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 `;
@@ -65,16 +65,31 @@ const SForecast= styled(Forecast)`
 `;
 
 const WeatherManager= (props) => {
+  const [isSearching, setIsSearching]= useState(false);
+  const [locationKey, setLocationKey]= useState('');
+  const [city, setCity]= useState('');
+  const [country, setCountry]= useState('');
 
+  const onSearchHandler= (inSearch) => {
+    setIsSearching(inSearch);
+  }
+
+  const onLocationChoiceHandler= (locationData) => {
+    setLocationKey(locationData.locationKey);
+    setCity(locationData.city);
+    setCountry(locationData.countryId);
+  }
   
   return (
       <SWeatherManager 
       className={props.className}>
-        <SInput />
+        <SSearch 
+        onSearch= {onSearchHandler}
+        onLocationChoice= {onLocationChoiceHandler}/>
         <SCurrConditions
         data= {{
-                city: 'New-York',
-                country: 'US',
+                city: city,
+                country: country,
                 deg: '5',
                 description: 'overcast clouds'
         }}/>
