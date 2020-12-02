@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Search from '../Search/Search';
 import CurrManager from '../CurrManager/CurrManager';
 import DailyManager from '../DailyManager/DailyManager';
-import CurrParameters from '../../components/CurrParameters/CurrParameters';
-import Forecast from '../../components/Forecast/Forecast';
+import ForecastManager from '../ForecastManager/ForcastManager';
 
 const SWeatherManager= styled.div`
   height: 100%;
@@ -55,7 +54,7 @@ const SDailyManager= styled(DailyManager)`
   }
 `;
 
-const SForecast= styled(Forecast)`
+const SForecastManager= styled(ForecastManager)`
   grid-row: 3 / -1;
   grid-column: 1 / -1;
 
@@ -94,21 +93,8 @@ const WeatherManager= (props) => {
         }}/>
         <SDailyManager
         locationKey= {locationKey}/>
-        <SForecast 
-        data= { [
-          {date: '04.01', time: '06:00', description: 'cloudy', value: '4'},
-          {date: '04.01', time: '09:00', description: 'cloudy', value: '3'},
-          {date: '04.01', time: '12:00', description: 'cloudy', value: '2'},
-          {date: '04.01', time: '15:00', description: 'cloudy', value: '5'},
-          {date: '04.01', time: '18:00', description: 'cloudy', value: '8'},
-          {date: '04.01', time: '21:00', description: 'cloudy', value: '9'},
-          {date: '04.02', time: '00:00', description: 'cloudy', value: '7'},
-          {date: '04.02', time: '03:00', description: 'cloudy', value: '5'},
-          {date: '04.02', time: '05:00', description: 'cloudy', value: '4'},
-          {date: '04.02', time: '07:00', description: 'cloudy', value: '5'},
-          {date: '04.02', time: '09:00', description: 'cloudy', value: '6'},
-          {date: '04.02', time: '13:00', description: 'cloudy', value: '6'}
-      ] }/>
+        <SForecastManager 
+        locationKey= {locationKey}/>
       </SWeatherManager>
   );
 }

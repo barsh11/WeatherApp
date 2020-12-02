@@ -50,7 +50,7 @@ const Typography= (props) => {
         uppercase= {props.uppercase || false}
         shadow= {props.shadow || false}
         >
-            {props.text || 'example text'}
+            {props.text || ''}
         </STypography>
     );
 }
