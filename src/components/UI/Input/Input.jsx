@@ -6,14 +6,10 @@ const SInputWrapper= styled.div`
     display: flex;
     align-items: center;
 
-    width: 80rem;
+    width: 70rem;
 
     @media only screen and (max-width: 56.25em){
-        width: 90%;
-    }
-
-    @media only screen and (max-width: 31.25em){
-        width: 90%;
+        width: 80%;
     }
 `;
 

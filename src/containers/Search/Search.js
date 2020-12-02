@@ -7,6 +7,10 @@ import Input from "../../components/UI/Input/Input";
 const SSearch= styled.form`
     min-width: 80%;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     position: relative;
 `;
 
@@ -14,20 +18,46 @@ const SInput= styled(Input)`
     margin: 0 auto;
 `;
 
+/*$bp-largest: 75em; //1200px
+$bp-large: 68.75em; //1100px
+$bp-medium: 56.25em; //900px
+$bp-small:  37.5em; //600px
+$bp-smallest: 31.25em; //500px*/
+
 const SUl= styled.ul`
     list-style: none;
     font-size: 2rem;
     background-color: white;
-    width: 70rem;
+    width: 60rem;
     position: absolute;
     top: 8rem;
-    left: 43rem;
+    margin: auto auto auto 4.5rem;
     padding: 2rem;
 
-    
+    box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
+
+    @media only screen and (max-width: 56.25em){
+        width: 65%;
+        margin: auto auto auto 3rem;
+
+    }
+
+    @media only screen and (max-width: 31.25em){
+        width: 50%;
+    }
 `;
 
 const SLi= styled.li`
+
+padding: 4px 2px;
+
+&:not(:last-child)::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    display: block;
+}
 `;
 
 const Sa= styled.a`
