@@ -47,6 +47,7 @@ useEffect(() => {
 
   return (
     <CurrParameters
+    className= {props.className}
     data= { [{value: highTemperature, label: 'hight'},
     {value: lowTemperature, label: 'low'},
     {value: wind, label: 'wind'},

@@ -25,6 +25,7 @@ const CurrManager = (props) => {
 
   return (
     <CurrConditions
+    className= {props.className}
       data={{
         city: props.data.city,
         country: props.data.country,
