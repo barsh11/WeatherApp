@@ -29,6 +29,7 @@ const CurrParameters= props => {
 
     const renderCurrParameter= (value, label) => {
         return <CurrParameter
+                key= {label}
                 value= {value}
                 label= {label} />
     }

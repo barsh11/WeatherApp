@@ -22,6 +22,7 @@ const Forecast= props => {
 
     const renderForecastItem= ({date, time, description, value}) => {
         return <ForecastItem
+                key= {time}
                 data= {{date: date, time: time, description: description, value: value}}/>
     }
 
