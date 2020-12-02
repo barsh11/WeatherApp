@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Search from '../Search/Search';
 import CurrConditions from '../../components/CurrConditions/CurrConditions'
 import CurrParameters from '../../components/CurrParameters/CurrParameters';
 import Forecast from '../../components/Forecast/Forecast';
+import Loader from '../../components/UI/Loader/Loader';
 
 const SWeatherManager= styled.div`
   height: 100%;
@@ -76,7 +77,7 @@ const WeatherManager= (props) => {
   const onLocationChoiceHandler= (locationData) => {
     setLocationKey(locationData.locationKey);
     setCity(locationData.city);
-    setCountry(locationData.country);
+    setCountry(locationData.countryId);
   }
   
   return (
@@ -87,8 +88,8 @@ const WeatherManager= (props) => {
         onLocationChoice= {onLocationChoiceHandler}/>
         <SCurrConditions
         data= {{
-                city: 'New-York',
-                country: 'US',
+                city: city,
+                country: country,
                 deg: '5',
                 description: 'overcast clouds'
         }}/>

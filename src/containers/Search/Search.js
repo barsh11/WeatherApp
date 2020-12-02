@@ -11,17 +11,17 @@ const SSearch= styled.form`
 `;
 
 const SInput= styled(Input)`
-    width: 100%;
+    margin: 0 auto;
 `;
 
 const SUl= styled.ul`
     list-style: none;
     font-size: 2rem;
     background-color: white;
-    width: 95%;
+    width: 70rem;
     position: absolute;
-    top: 7rem;
-    left: 5.3rem;
+    top: 8rem;
+    left: 20rem;
     padding: 2rem;
 `;
 
