@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../services/axios-daily";
 import moment from 'moment';
 import CurrParameters from "../../components/CurrParameters/CurrParameters";
@@ -21,6 +21,7 @@ const DailyManager = (props) => {
     const [rainProb, setRainProb]= useState('');
     const [wind, setWind]= useState('');
 
+useEffect(() => {
   const query = props.locationKey;
   if (query) {
     axios
@@ -41,6 +42,8 @@ const DailyManager = (props) => {
         return [];
       });
   }
+})    
+
 
   return (
     <CurrParameters
