@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../services/axios-forecast";
+import moment from 'moment';
 import Forecast from "../../components/Forecast/Forecast";
 
+const FtoC= (fDeg) => {
+    return ((fDeg-32)*(5/9)).toFixed(1);    
+}
+
+const toLocalDate= (ISO8601String) => {
+    const ISODate= moment.utc().format(ISO8601String);
+    const utcDate= moment.utc(ISODate).toDate();
+    return moment(utcDate).local().format('DD.MM');
+}
+
+const toLocalTime= (ISO8601String) => {
+    const ISODate= moment.utc().format(ISO8601String);
+    const utcDate= moment.utc(ISODate).toDate();
+    return moment(utcDate).local().format('HH:mm');
+}
+
 const ForcastManager = (props) => {
+const [results, setReuslts]= useState([]);
 
 useEffect(() => {
   const query = props.locationKey;
@@ -10,7 +28,16 @@ useEffect(() => {
     axios
       .get(`${query}`)
       .then((res) => {
-
+        let forecastResults= res.data.map(a => ({...a}));
+        forecastResults= forecastResults.map(el => {
+            return {
+                date: toLocalDate(el.DateTime),
+                time: toLocalTime(el.DateTime),
+                description: 'cloudy', // to be fixed with icons
+                value: FtoC(el.Temperature.Value)
+            }
+        })
+        setReuslts(forecastResults);
       })
       .catch((err) => {
         console.log(err); // to be exchanged with the error modal
@@ -22,20 +49,7 @@ useEffect(() => {
   return (
       <Forecast
       className= {props.className} 
-      data= { [
-        {date: '04.01', time: '06:00', description: 'cloudy', value: '4'},
-        {date: '04.01', time: '09:00', description: 'cloudy', value: '3'},
-        {date: '04.01', time: '12:00', description: 'cloudy', value: '2'},
-        {date: '04.01', time: '15:00', description: 'cloudy', value: '5'},
-        {date: '04.01', time: '18:00', description: 'cloudy', value: '8'},
-        {date: '04.01', time: '21:00', description: 'cloudy', value: '9'},
-        {date: '04.02', time: '00:00', description: 'cloudy', value: '7'},
-        {date: '04.02', time: '03:00', description: 'cloudy', value: '5'},
-        {date: '04.02', time: '05:00', description: 'cloudy', value: '4'},
-        {date: '04.02', time: '07:00', description: 'cloudy', value: '5'},
-        {date: '04.02', time: '09:00', description: 'cloudy', value: '6'},
-        {date: '04.02', time: '13:00', description: 'cloudy', value: '6'}
-    ] }/>
+      data= {results}/>
   );
 }
 
