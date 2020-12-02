@@ -21,8 +21,10 @@ const SUl= styled.ul`
     width: 70rem;
     position: absolute;
     top: 8rem;
-    left: 20rem;
+    left: 43rem;
     padding: 2rem;
+
+    
 `;
 
 const SLi= styled.li`
@@ -48,7 +50,6 @@ const Search = (props) => {
     useEffect(() => {
         if (debouncedSearchInput){
             setIsSearching(true);
-            props.onSearch(isSearching);
 
             const query= debouncedSearchInput;
             if (query){
@@ -57,7 +58,6 @@ const Search = (props) => {
                 })
                 .then(res => {
                     setIsSearching(false);
-                    props.onSearch(isSearching);
                     let limitedResults= [];
                     const limit= 10;
                     for (let i=0 ; i < limit ; i++){

@@ -21,6 +21,7 @@ const toLocalTime= (ISO8601String) => {
 
 const ForcastManager = (props) => {
 const [results, setReuslts]= useState([]);
+// ICON is missing
 
 useEffect(() => {
   const query = props.locationKey;

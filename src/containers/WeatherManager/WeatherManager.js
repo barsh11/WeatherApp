@@ -64,29 +64,39 @@ const SForecastManager= styled(ForecastManager)`
 `;
 
 const WeatherManager= (props) => {
-  const [isSearching, setIsSearching]= useState(false);
+  const [error, setError]= useState(false);
   const [locationKey, setLocationKey]= useState('');
   const [city, setCity]= useState('');
   const [country, setCountry]= useState('');
 
-  const onSearchHandler= (inSearch) => {
-    setIsSearching(inSearch);
-  }
+  useEffect(() => {
+    if(error){
+      setLocationKey('');
+      setCity('');
+      setCountry('');
+
+      setError(false);
+    }
+  }, [error]);
 
   const onLocationChoiceHandler= (locationData) => {
     setLocationKey(locationData.locationKey);
     setCity(locationData.city);
     setCountry(locationData.countryId);
   }
+
+  const onErrorHandler= (isError) => {
+    setError(true);
+  }
   
   return (
       <SWeatherManager 
       className={props.className}>
         <SSearch 
-        onSearch= {onSearchHandler}
         onLocationChoice= {onLocationChoiceHandler}/>
         <SCurrManager
         locationKey= {locationKey}
+        onError= {onErrorHandler}
         data= {{
                 city: city,
                 country: country

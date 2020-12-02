@@ -14,9 +14,7 @@ const SBackdrop= styled.div`
 
 const Backdrop= props => {
     return (
-        <SBackdrop>
-
-        </SBackdrop>
+        props.show ? <SBackdrop onClick={props.clicked}></SBackdrop> : null
     );
 }
 
