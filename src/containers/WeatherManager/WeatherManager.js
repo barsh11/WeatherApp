@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Search from '../Search/Search';
-import CurrConditions from '../../components/CurrConditions/CurrConditions'
+import CurrManager from '../CurrManager/CurrManager';
 import CurrParameters from '../../components/CurrParameters/CurrParameters';
 import Forecast from '../../components/Forecast/Forecast';
-import Loader from '../../components/UI/Loader/Loader';
 
 const SWeatherManager= styled.div`
   height: 100%;
@@ -33,7 +32,7 @@ const SSearch= styled(Search)`
   grid-column: 1 / -1;
 `;
 
-const SCurrConditions= styled(CurrConditions)`
+const SCurrManager= styled(CurrManager)`
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
 
@@ -86,12 +85,11 @@ const WeatherManager= (props) => {
         <SSearch 
         onSearch= {onSearchHandler}
         onLocationChoice= {onLocationChoiceHandler}/>
-        <SCurrConditions
+        <SCurrManager
+        locationKey= {locationKey}
         data= {{
                 city: city,
-                country: country,
-                deg: '5',
-                description: 'overcast clouds'
+                country: country
         }}/>
         <SCurrParameters
             data= { [{value: '6', label: 'hight'},
