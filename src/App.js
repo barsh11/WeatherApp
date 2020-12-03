@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GlobalStyle from './style/globalStyle';
 import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
-import WeatherManager from './containers/WeatherManager/WeatherManager';
+import WeatherContainer from './containers/WeatherContainer/WeatherContainer';
 
 const Sdiv= styled.div`
   width: 100%;
@@ -52,7 +52,7 @@ function App() {
         typographyType= 'heading3'
         uppercase= {true}
         text= 'weather app'/>
-       <WeatherManager /> {/*WeatherContainer*/}
+       <WeatherContainer /> {/*WeatherContainer*/}
       </Sdiv> 
     </>
   );

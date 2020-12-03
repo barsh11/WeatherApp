@@ -4,9 +4,8 @@ import Search from "../Search/Search";
 import CurrManager from "../CurrManager/CurrManager";
 import DailyManager from "../DailyManager/DailyManager";
 import ForecastManager from "../ForecastManager/ForcastManager";
-import Loader from "../../components/UI/Loader/Loader";
 
-const SWeatherManager = styled.div`
+const SWeatherContainer = styled.div`
 grid-row: 2 / span 1;
 grid-column: 1 / -1;
 
@@ -70,12 +69,7 @@ const SForecastManager = styled(ForecastManager)`
   }
 `;
 
-const SLoader = styled(Loader)`
-  grid-row: 2 / span 1;
-  grid-column: 1 / -1;
-`;
-
-const WeatherManager = (props) => {
+const WeatherContainer = (props) => {
   const [error, setError] = useState(false);
   const [locationKey, setLocationKey] = useState("");
   const [city, setCity] = useState("");
@@ -101,16 +95,15 @@ const WeatherManager = (props) => {
     setError(true);
   };
 
-  console.log(props);
-
   return (
-    <SWeatherManager>
+    <SWeatherContainer>
       <SSearch onLocationChoice={onLocationChoiceHandler} />
       {!locationKey ? (
-        <SLoader />
+        null
       ) : (
         [
           <SCurrManager
+            key={'CurrManager'}
             locationKey={locationKey}
             onError={onErrorHandler}
             data={{
@@ -118,12 +111,16 @@ const WeatherManager = (props) => {
               country: country,
             }}
           />,
-          <SDailyManager locationKey={locationKey} />,
-          <SForecastManager locationKey={locationKey} />,
+          <SDailyManager 
+          key= {'DailyManager'}
+          locationKey={locationKey} />,
+          <SForecastManager 
+          key= {'ForecastManager'}
+          locationKey={locationKey} />,
         ]
       )}
-    </SWeatherManager>
+    </SWeatherContainer>
   );
 };
 
-export default WeatherManager;
+export default WeatherContainer;
