@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Search from '../Search/Search';
-import CurrManager from '../CurrManager/CurrManager';
-import DailyManager from '../DailyManager/DailyManager';
-import ForecastManager from '../ForecastManager/ForcastManager';
-import Loader from '../../components/UI/Loader/Loader';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Search from "../Search/Search";
+import CurrManager from "../CurrManager/CurrManager";
+import DailyManager from "../DailyManager/DailyManager";
+import ForecastManager from "../ForecastManager/ForcastManager";
+import Loader from "../../components/UI/Loader/Loader";
 
-const SWeatherManager= styled.div`
-  height: 100%;
+const SWeatherManager = styled.div`
+grid-row: 2 / span 1;
+grid-column: 1 / -1;
+
+justify-self: start;
+align-self: start;  
+
+height: 100%;
   width: 100%;
     
   display: grid;
@@ -28,92 +34,96 @@ const SWeatherManager= styled.div`
   }
 `;
 
-const SSearch= styled(Search)`
+const SSearch = styled(Search)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 `;
 
-const SCurrManager= styled(CurrManager)`
+const SCurrManager = styled(CurrManager)`
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
 
   justify-self: start;
 
-  @media only screen and (max-width: 56.25em){
+  @media only screen and (max-width: 56.25em) {
     grid-column: 1 / -1;
     justify-self: center;
   }
 `;
 
-const SDailyManager= styled(DailyManager)`
+const SDailyManager = styled(DailyManager)`
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
 
-  @media only screen and (max-width: 56.25em){
+  @media only screen and (max-width: 56.25em) {
     grid-row: 3 / span 1;
     grid-column: 1 / -1;
   }
 `;
 
-const SForecastManager= styled(ForecastManager)`
+const SForecastManager = styled(ForecastManager)`
   grid-row: 3 / -1;
   grid-column: 1 / -1;
 
-  @media only screen and (max-width: 56.25em){
+  @media only screen and (max-width: 56.25em) {
     grid-row: 4 / -1;
   }
 `;
 
-const SLoader= styled(Loader)`
+const SLoader = styled(Loader)`
   grid-row: 2 / span 1;
   grid-column: 1 / -1;
 `;
 
-const WeatherManager= (props) => {
-  const [error, setError]= useState(false);
-  const [locationKey, setLocationKey]= useState('');
-  const [city, setCity]= useState('');
-  const [country, setCountry]= useState('');
+const WeatherManager = (props) => {
+  const [error, setError] = useState(false);
+  const [locationKey, setLocationKey] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
 
   useEffect(() => {
-    if(error){
-      setLocationKey('');
-      setCity('');
-      setCountry('');
+    if (error) {
+      setLocationKey("");
+      setCity("");
+      setCountry("");
 
       setError(false);
     }
   }, [error]);
 
-  const onLocationChoiceHandler= (locationData) => {
+  const onLocationChoiceHandler = (locationData) => {
     setLocationKey(locationData.locationKey);
     setCity(locationData.city);
     setCountry(locationData.countryId);
-  }
+  };
 
-  const onErrorHandler= (isError) => {
+  const onErrorHandler = (isError) => {
     setError(true);
-  }
-  
+  };
+
+  console.log(props);
+
   return (
-      <SWeatherManager 
-      className={props.className}>
-        <SSearch 
-        onLocationChoice= {onLocationChoiceHandler}/>
-        {!locationKey ? <SLoader /> :
-        [<SCurrManager
-        locationKey= {locationKey}
-        onError= {onErrorHandler}
-        data= {{
-                city: city,
-                country: country
-        }}/>,
-        <SDailyManager
-        locationKey= {locationKey}/>,
-        <SForecastManager 
-        locationKey= {locationKey}/>]}
-      </SWeatherManager>
+    <SWeatherManager>
+      <SSearch onLocationChoice={onLocationChoiceHandler} />
+      {!locationKey ? (
+        <SLoader />
+      ) : (
+        [
+          <SCurrManager
+            locationKey={locationKey}
+            onError={onErrorHandler}
+            data={{
+              city: city,
+              country: country,
+            }}
+          />,
+          <SDailyManager locationKey={locationKey} />,
+          <SForecastManager locationKey={locationKey} />,
+        ]
+      )}
+    </SWeatherManager>
   );
-}
+};
 
 export default WeatherManager;

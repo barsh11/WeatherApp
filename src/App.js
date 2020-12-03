@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GlobalStyle from './style/globalStyle';
 import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
-import WeatherManger from './containers/WeatherManager/WeatherManager';
+import WeatherManager from './containers/WeatherManager/WeatherManager';
 
 const Sdiv= styled.div`
   width: 100%;
@@ -41,26 +41,18 @@ const SLabel= styled(Typography)`
   align-self: start;
 `;
 
-const SWeatherManager= styled(WeatherManger)`
-  grid-row: 2 / span 1;
-  grid-column: 1 / -1;
-
-  justify-self: start;
-  align-self: start;
-`;
-
-
 function App() {
   
   return (
     <>
       <GlobalStyle />
-      <Sdiv>
+      <Sdiv> {/*container*/}
+      {/*app-name*/}
         <SLabel 
         typographyType= 'heading3'
         uppercase= {true}
         text= 'weather app'/>
-       <SWeatherManager />
+       <WeatherManager /> {/*WeatherContainer*/}
       </Sdiv> 
     </>
   );

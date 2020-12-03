@@ -44,8 +44,8 @@ useEffect(() => {
         console.log(err); // to be exchanged with the error modal
         return [];
       });
-  }
-})    
+    }
+  }, [props.locationKey]);  
 
   return (
       <Forecast

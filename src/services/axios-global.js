@@ -1,5 +1,5 @@
 // API KEY
-export const API_KEY= 'VksAr8hdMoKdnOQKE7PPuggw49pD09Xv';
+export const API_KEY= 'jlfEqbKUbVAxazV5lRKyg9hy6LUGOGUG';
 
 // LOCATIONS
 export const BASE_URL_LOCATIONS= 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete';
