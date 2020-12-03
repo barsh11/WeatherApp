@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../services/axios-daily";
+import { axiosDaily as axios } from "../../services/axios";
 import moment from 'moment';
 import CurrParameters from "../../components/CurrParameters/CurrParameters";
 

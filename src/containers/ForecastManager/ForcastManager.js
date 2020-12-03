@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../services/axios-forecast";
+import { axiosForecast as axios } from "../../services/axios";
 import moment from 'moment';
 import Forecast from "../../components/Forecast/Forecast";
 

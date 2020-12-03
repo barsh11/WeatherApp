@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import axios from '../../services/axios-locations';
+import { axiosLocations as axios } from "../../services/axios";
 import useDebounce from '../../hooks/useDebounce';
 import Input from "../../components/UI/Input/Input";
 

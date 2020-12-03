@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../services/axios-conditions";
+import { axiosConditions as axios } from "../../services/axios";
 import CurrConditions from "../../components/CurrConditions/CurrConditions";
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 
