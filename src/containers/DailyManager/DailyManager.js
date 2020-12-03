@@ -42,7 +42,7 @@ useEffect(() => {
         return [];
       });
   }
-  });
+  }, [props.locationKey]);
 
 
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosConditions as axios } from "../../services/axios";
-import { getIconSrc } from '../../utiles/getIconSrc';
+import { getIconSrc } from '../../utilities/getIconSrc';
 import CurrConditions from "../../components/CurrConditions/CurrConditions";
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 
@@ -13,7 +13,6 @@ const CurrManager = (props) => {
   useEffect(() => {
     const query = props.locationKey;
     if (query) {
-
       axios
         .get(`${query}`)
         .then((res) => {

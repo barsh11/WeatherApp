@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosForecast as axios } from "../../services/axios";
 import moment from 'moment';
 import Forecast from "../../components/Forecast/Forecast";
-import { getIconSrc } from '../../utiles/getIconSrc';
+import { getIconSrc } from '../../utilities/getIconSrc';
 
 const FtoC= (fDeg) => {
     return ((fDeg-32)*(5/9)).toFixed(1);    

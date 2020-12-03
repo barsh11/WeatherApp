@@ -14,10 +14,6 @@ const SSearch= styled.form`
     position: relative;
 `;
 
-const SInput= styled(Input)`
-    margin: 0 auto;
-`;
-
 /*$bp-largest: 75em; //1200px
 $bp-large: 68.75em; //1100px
 $bp-medium: 56.25em; //900px
@@ -71,7 +67,6 @@ const Sa= styled.a`
 const Search = (props) => {
     const [searchInput, setSearchInput]= useState('');
     const [results, setResults]= useState([]);
-    const [isSearching, setIsSearching]= useState(false);
     const [location, setLocation]= useState(null);
     const [isShown, setIsShown]= useState(false);
 
@@ -79,7 +74,6 @@ const Search = (props) => {
 
     useEffect(() => {
         if (debouncedSearchInput){
-            setIsSearching(true);
 
             const query= debouncedSearchInput;
             if (query){
@@ -87,7 +81,6 @@ const Search = (props) => {
                     params: {...axios.params, q: query}
                 })
                 .then(res => {
-                    setIsSearching(false);
                     let limitedResults= [];
                     const limit= 10;
                     for (let i=0 ; i < limit ; i++){
@@ -144,7 +137,7 @@ const Search = (props) => {
     return(
         <SSearch
         className= {props.className}>
-            <SInput 
+            <Input 
             changed= {e => setSearchInput(e.target.value)}
             value= {searchInput}/>
             {isShown && content}
