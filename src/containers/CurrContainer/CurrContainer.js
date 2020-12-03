@@ -27,6 +27,10 @@ const CurrManager = (props) => {
           props.onError(true);
           setError({error: true, message: err.message});
         });
+    } else{
+      setTemperature('');
+      setDescription('');
+      setIconNumber(null);
     }
   }, [props]);
 
