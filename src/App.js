@@ -5,7 +5,7 @@ import Typography from './components/UI/Typography/Typography';
 import img from './assets/coverPhoto.jpg';
 import WeatherContainer from './containers/WeatherContainer/WeatherContainer';
 
-const Sdiv= styled.div`
+const SContainer= styled.div`
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -33,7 +33,7 @@ const Sdiv= styled.div`
   }
 `;
 
-const SLabel= styled(Typography)`
+const SAppTitle= styled(Typography)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 
@@ -46,14 +46,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Sdiv> {/*container*/}
-      {/*app-name*/}
-        <SLabel 
+      <SContainer>
+        <SAppTitle 
         typographyType= 'heading3'
         uppercase= {true}
         text= 'weather app'/>
-       <WeatherContainer /> {/*WeatherContainer*/}
-      </Sdiv> 
+       <WeatherContainer />
+      </SContainer> 
     </>
   );
 }
