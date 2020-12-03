@@ -2,11 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../UI/Typography/Typography';
 import WeatherIcon from '../UI/WeatherIcon/WeatherIcon'
-import Icon from '../UI/Icon/Icon';
 
 const SCurrWeatherWrapper= styled.div`
     display: flex;
     align-items: center;
+
+    align-self: center;
+    
+    margin-right: -13rem;
+
+    @media only screen and (max-width: 75em){
+        margin-right: 0;
+    }
 `;
 
 const SCurrWeather= styled.div`

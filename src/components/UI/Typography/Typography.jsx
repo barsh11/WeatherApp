@@ -6,6 +6,10 @@ const setTypographySize= (type) => {
         case 'heading1':
             return `
             8rem;
+
+            @media only screen and (max-width: 37.25em){
+                font-size: 6rem;
+            }
             `;
         case 'heading2':
             return `

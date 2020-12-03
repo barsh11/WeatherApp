@@ -1,6 +1,6 @@
 
 export const getIconSrc= (iconNum) => {
-    let num= iconNum.toString();
+    let num= iconNum?.toString();
     if(iconNum < 10){
         num= `0${num}`;
     }

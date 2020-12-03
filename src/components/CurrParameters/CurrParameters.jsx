@@ -4,6 +4,7 @@ import CurrParameter from '../CurrParameter/CurrParameter';
 
 const SCurrParametersWrapper= styled.div`
     width: 85%;
+    min-width: 300px;
     height: 55%;
     background-color: rgba(255,255,255, 0.2);
     border-radius: 2rem;

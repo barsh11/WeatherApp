@@ -6,7 +6,11 @@ const setSize= (size) => {
         case 'small':
             return '3.5rem';
         default: //big
-            return '25rem';
+            return `25rem;
+            
+            @media only screen and (max-width: 37.25em){
+                width: 20rem;
+            }`;
     }
 }
 

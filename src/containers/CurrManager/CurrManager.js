@@ -8,11 +8,12 @@ const CurrManager = (props) => {
   const [error, setError]= useState({error: false, message: ''});
   const [temperature, setTemperature] = useState("");
   const [description, setDescription] = useState("");
-  const [iconNumber, setIconNumber]= useState('');
+  const [iconNumber, setIconNumber]= useState(null);
 
   useEffect(() => {
     const query = props.locationKey;
     if (query) {
+
       axios
         .get(`${query}`)
         .then((res) => {
@@ -22,8 +23,8 @@ const CurrManager = (props) => {
           setError({error: false, message: ''});
         })
         .catch((err) => {
-          setError({error: true, message: err.message});
           props.onError(true);
+          setError({error: true, message: err.message});
         });
     }
   }, [props]);

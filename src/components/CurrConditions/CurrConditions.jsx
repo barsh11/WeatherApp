@@ -9,15 +9,9 @@ const SCurrConditions= styled.div`
     flex-direction: column;
 
     margin: 4rem;
-`;
 
-const SCurrWeather= styled(CurrWeather)`
-    align-self: center;
-    
-    margin-right: -13rem;
-
-    @media only screen and (max-width: 75em){
-        margin-right: 0;
+    @media only screen and (max-width: 56.25em){
+        align-items: center;
     }
 `;
 
@@ -30,7 +24,7 @@ const CurrConditions= props => {
             data= {props.data && {city: props.data.city, country: props.data.country}}
             />
             <CurrDate />
-            <SCurrWeather
+            <CurrWeather
             data= {props.data && {deg: props.data.deg, description: props.data.description, iconSrc: props.data.iconSrc}}
             />
         </SCurrConditions>
