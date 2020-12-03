@@ -42,7 +42,7 @@ const SCurrContainer = styled(CurrContainer)`
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
 
-  justify-self: start;
+  justify-self: center;
 
   @media only screen and (max-width: 56.25em) {
     grid-column: 1 / -1;
