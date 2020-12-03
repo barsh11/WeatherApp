@@ -20,10 +20,10 @@ const SForecast= styled.div`
 
 const Forecast= props => {
 
-    const renderForecastItem= ({date, time, description, value}) => {
+    const renderForecastItem= ({date, time, value, iconSrc}) => {
         return <ForecastItem
                 key= {time}
-                data= {{date: date, time: time, description: description, value: value}}/>
+                data= {{date: date, time: time, value: value, iconSrc: iconSrc}}/>
     }
 
     return (
@@ -34,7 +34,7 @@ const Forecast= props => {
             shadow= {true}
             text= 'forecast'/>
             <SForecast>
-                {props.data?.map(el => renderForecastItem({date: el.date, time: el.time, description: el.description, value: el.value}))}
+                {props.data?.map(el => renderForecastItem({date: el.date, time: el.time, value: el.value, iconSrc: el.iconSrc}))}
             </SForecast>
         </SForecastWrapper>
     );

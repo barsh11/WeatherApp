@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../UI/Typography/Typography';
+import WeatherIcon from '../UI/WeatherIcon/WeatherIcon'
 import Icon from '../UI/Icon/Icon';
 
 const SCurrWeatherWrapper= styled.div`
@@ -21,10 +22,9 @@ const CurrWeather= props => {
     return (
         <SCurrWeatherWrapper
         className= {props.className}>
-            <Icon
-            name= "cloud"
-            color= "white"
-            size= "18rem" />
+            <WeatherIcon
+            src= {props.data?.iconSrc}
+            size= 'big' />
             <SCurrWeather>
                 <Typography
                     className= {props.className}

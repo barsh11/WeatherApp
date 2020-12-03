@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosForecast as axios } from "../../services/axios";
 import moment from 'moment';
 import Forecast from "../../components/Forecast/Forecast";
+import { getIconSrc } from '../../utiles/getIconSrc';
 
 const FtoC= (fDeg) => {
     return ((fDeg-32)*(5/9)).toFixed(1);    
@@ -21,7 +22,6 @@ const toLocalTime= (ISO8601String) => {
 
 const ForcastManager = (props) => {
 const [results, setReuslts]= useState([]);
-// ICON is missing
 
 useEffect(() => {
   const query = props.locationKey;
@@ -34,8 +34,8 @@ useEffect(() => {
             return {
                 date: toLocalDate(el.DateTime),
                 time: toLocalTime(el.DateTime),
-                description: 'cloudy', // to be fixed with icons
-                value: FtoC(el.Temperature.Value)
+                value: FtoC(el.Temperature.Value),
+                iconSrc: getIconSrc(el.WeatherIcon)
             }
         })
         setReuslts(forecastResults);

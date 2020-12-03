@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosConditions as axios } from "../../services/axios";
+import { getIconSrc } from '../../utiles/getIconSrc';
 import CurrConditions from "../../components/CurrConditions/CurrConditions";
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 
@@ -7,7 +8,7 @@ const CurrManager = (props) => {
   const [error, setError]= useState({error: false, message: ''});
   const [temperature, setTemperature] = useState("");
   const [description, setDescription] = useState("");
-  // ICON is missing
+  const [iconNumber, setIconNumber]= useState('');
 
   useEffect(() => {
     const query = props.locationKey;
@@ -17,6 +18,7 @@ const CurrManager = (props) => {
         .then((res) => {
           setTemperature(res.data[0].Temperature.Metric.Value);
           setDescription(res.data[0].WeatherText);
+          setIconNumber(res.data[0].WeatherIcon);
           setError({error: false, message: ''});
         })
         .catch((err) => {
@@ -42,6 +44,7 @@ const CurrManager = (props) => {
         country: props.data.country,
         deg: temperature,
         description: description,
+        iconSrc: getIconSrc(iconNumber)
       }}
     />
   );

@@ -31,7 +31,7 @@ const CurrConditions= props => {
             />
             <CurrDate />
             <SCurrWeather
-            data= {props.data && {deg: props.data.deg, description: props.data.description}}
+            data= {props.data && {deg: props.data.deg, description: props.data.description, iconSrc: props.data.iconSrc}}
             />
         </SCurrConditions>
     );

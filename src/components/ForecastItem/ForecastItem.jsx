@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../UI/Typography/Typography';
-import Icon from '../UI/Icon/Icon';
+import WeatherIcon from '../UI/WeatherIcon/WeatherIcon';
 
 const SForcestItemWrapper= styled.div`
     padding: 0.8rem;
@@ -18,9 +18,9 @@ const SForcestItemWrapper= styled.div`
     justify-content: center;
 `;
 
-const SIcon= styled(Icon)`
-    margin: 4px;
-    margin-bottom: 6px;
+const SWeatherIcon= styled(WeatherIcon)`
+    margin: 6px;
+    margin-bottom: 8px;
 `;
 
 const ForecastItem= props => {
@@ -36,9 +36,9 @@ const ForecastItem= props => {
             typographyType= 'body'
             capitalize= {false}
             text= {props.data.time} />
-            <SIcon
-            name= {props.data.description}
-            size= "2rem"/>
+            <SWeatherIcon
+            src= {props.data.iconSrc}
+            size= "small"/>
             <Typography
             typographyType= 'body'
             capitalize= {false}
