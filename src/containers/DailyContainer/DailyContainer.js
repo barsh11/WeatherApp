@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosDaily as axios } from "../../services/axios";
+import _ from 'lodash';
 import moment from 'moment';
 import CurrParameters from "../../components/CurrParameters/CurrParameters";
 
@@ -27,15 +28,17 @@ useEffect(() => {
     axios
       .get(`${query}`)
       .then((res) => {
-        const sunriseTime= res.data.DailyForecasts[0].Sun.Rise;
-        const sunsetTime= res.data.DailyForecasts[0].Sun.Set;
+        const results= _.cloneDeep(res.data.DailyForecasts[0]);
+
+        const sunriseTime= results.Sun.Rise;
+        const sunsetTime= results.Sun.Set;
 
         setSunrise(toLocalTime(sunriseTime));
         setSunset(toLocalTime(sunsetTime));
-        setLowTemperature(FtoC(res.data.DailyForecasts[0].Temperature.Minimum.Value));
-        setHighTemperature(FtoC(res.data.DailyForecasts[0].Temperature.Maximum.Value));
-        setRainProb(res.data.DailyForecasts[0].Day.RainProbability);
-        setWind(res.data.DailyForecasts[0].Day.Wind.Speed.Value);
+        setLowTemperature(FtoC(results.Temperature.Minimum.Value));
+        setHighTemperature(FtoC(results.Temperature.Maximum.Value));
+        setRainProb(results.Day.RainProbability);
+        setWind(results.Day.Wind.Speed.Value);
       })
       .catch((err) => {
         console.log(err); // to be exchanged with the error modal

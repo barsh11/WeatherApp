@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosConditions as axios } from "../../services/axios";
+import _ from 'lodash';
 import { getIconSrc } from '../../utilities/getIconSrc';
 import CurrConditions from "../../components/CurrConditions/CurrConditions";
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
@@ -16,9 +17,10 @@ const CurrManager = (props) => {
       axios
         .get(`${query}`)
         .then((res) => {
-          setTemperature(res.data[0].Temperature.Metric.Value);
-          setDescription(res.data[0].WeatherText);
-          setIconNumber(res.data[0].WeatherIcon);
+          const results= _.cloneDeep(res.data[0]);
+          setTemperature(results.Temperature.Metric.Value);
+          setDescription(results.WeatherText);
+          setIconNumber(results.WeatherIcon);
           setError({error: false, message: ''});
         })
         .catch((err) => {

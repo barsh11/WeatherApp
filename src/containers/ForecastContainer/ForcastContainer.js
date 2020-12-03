@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosForecast as axios } from "../../services/axios";
+import _ from 'lodash';
 import moment from 'moment';
 import Forecast from "../../components/Forecast/Forecast";
 import { getIconSrc } from '../../utilities/getIconSrc';
@@ -29,7 +30,7 @@ useEffect(() => {
     axios
       .get(`${query}`)
       .then((res) => {
-        let forecastResults= res.data.map(a => ({...a}));
+        let forecastResults= _.cloneDeep(res.data);
         forecastResults= forecastResults.map(el => {
             return {
                 date: toLocalDate(el.DateTime),

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Search from "../Search/Search";
-import CurrManager from "../CurrManager/CurrManager";
-import DailyManager from "../DailyManager/DailyManager";
-import ForecastManager from "../ForecastManager/ForcastManager";
+import CurrContainer from "../CurrContainer/CurrContainer";
+import DailyContainer from "../DailyContainer/DailyContainer";
+import ForecastContainer from "../ForecastContainer/ForcastContainer";
 
 const SWeatherContainer = styled.div`
 grid-row: 2 / span 1;
@@ -38,7 +38,7 @@ const SSearch = styled(Search)`
   grid-column: 1 / -1;
 `;
 
-const SCurrManager = styled(CurrManager)`
+const SCurrContainer = styled(CurrContainer)`
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
 
@@ -50,7 +50,7 @@ const SCurrManager = styled(CurrManager)`
   }
 `;
 
-const SDailyManager = styled(DailyManager)`
+const SDailyContainer = styled(DailyContainer)`
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
 
@@ -60,7 +60,7 @@ const SDailyManager = styled(DailyManager)`
   }
 `;
 
-const SForecastManager = styled(ForecastManager)`
+const SForecastContainer = styled(ForecastContainer)`
   grid-row: 3 / -1;
   grid-column: 1 / -1;
 
@@ -102,8 +102,8 @@ const WeatherContainer = (props) => {
         null
       ) : (
         [
-          <SCurrManager
-            key={'CurrManager'}
+          <SCurrContainer
+            key={'CurrContainer'}
             locationKey={locationKey}
             onError={onErrorHandler}
             data={{
@@ -111,11 +111,11 @@ const WeatherContainer = (props) => {
               country: country,
             }}
           />,
-          <SDailyManager 
-          key= {'DailyManager'}
+          <SDailyContainer 
+          key= {'DailyContainer'}
           locationKey={locationKey} />,
-          <SForecastManager 
-          key= {'ForecastManager'}
+          <SForecastContainer 
+          key= {'ForecastContainer'}
           locationKey={locationKey} />,
         ]
       )}
