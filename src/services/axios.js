@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as axiosDefs from '../constants/axios';
+import * as axiosDefs from '../constants/weather';
 
 const createInstance= (url, queryParams) => {
     const instance= axios.create({
