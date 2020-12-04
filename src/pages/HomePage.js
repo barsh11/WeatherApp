@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GlobalStyle from '../style/globalStyle';
 import Typography from '../components/UI/Typography/Typography';
-import img from './assets/coverPhoto.jpg';
+import img from '../assets/coverPhoto.jpg';
 import WeatherContainer from '../containers/WeatherContainer/WeatherContainer';
 
 const SContainer= styled.div`
