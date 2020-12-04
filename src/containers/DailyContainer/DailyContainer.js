@@ -24,6 +24,15 @@ const DailyManager = (props) => {
 
   const {locationKey}= props;
 
+  const initState= useCallback(() => {
+    setSunrise("");
+    setSunset("");
+    setLowTemperature("");
+    setHighTemperature("");
+    setRainProb("");
+    setWind("");
+  }, []);
+
   const getState= useCallback((query, isActive) => {
     axios
     .get(`${query}`)
@@ -75,19 +84,20 @@ const DailyManager = (props) => {
         });*/
     } else {
       if(isActive){
-        setSunrise("");
+        initState();
+        /*setSunrise("");
         setSunset("");
         setLowTemperature("");
         setHighTemperature("");
         setRainProb("");
-        setWind("");
+        setWind("");*/
       }
     }
 
     return () => {
       isActive= false;
     }
-  }, [locationKey, getState]);
+  }, [locationKey, getState, initState]);
 
   return (
     <CurrParameters

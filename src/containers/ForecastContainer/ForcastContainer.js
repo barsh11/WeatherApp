@@ -26,6 +26,10 @@ const ForcastManager = (props) => {
 
   const {locationKey}= props;
 
+  const initState= useCallback(() => {
+    setResults([]);
+  }, []);
+
   const getState= useCallback((query, isActive) => {
     axios
     .get(`${query}`)
@@ -77,14 +81,15 @@ const ForcastManager = (props) => {
         });*/
     } else {
       if(isActive){
-        setResults([]);
+        initState();
+        /*setResults([]);*/
       }
     }
 
     return () => {
       isActive= false;
     }
-  }, [locationKey, getState]);
+  }, [locationKey, getState, initState]);
 
   return <Forecast className={props.className} data={results} />;
 };

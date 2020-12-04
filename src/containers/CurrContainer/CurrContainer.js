@@ -13,6 +13,12 @@ const CurrManager = (props) => {
 
   const {locationKey, onError}= props;
 
+  const initState= useCallback(() => {
+    setTemperature('');
+    setDescription('');
+    setIconNumber(null);
+  }, [])
+
   const getState= useCallback((query, isActive) => {
     axios
     .get(`${query}`)
@@ -54,16 +60,17 @@ const CurrManager = (props) => {
         });*/
     } else{
       if(isActive){
-        setTemperature('');
+        initState();
+        /*setTemperature('');
         setDescription('');
-        setIconNumber(null);
+        setIconNumber(null);*/
       }
     }
 
     return () => {
       isActive= false;
     }
-  }, [locationKey, onError, getState]);
+  }, [locationKey, onError, getState, initState]);
 
   const errorConfirmedHandler = () => {
     setError({error: false, message: ''});

@@ -73,6 +73,10 @@ const Search = (props) => {
 
   const {onLocationChoice}= props;
 
+  const initState= useCallback(() => {
+    setResults([]);
+  }, [])
+
   const getState= useCallback((query, isActive) => {
     axios
     .get("", {
@@ -87,9 +91,9 @@ const Search = (props) => {
         }
       }
       if(isActive){
-        setIsSearching(false);
         setResults(limitedResults);
         setIsShown(true);
+        setIsSearching(false);
       }
     })
     .catch((err) => {
@@ -129,20 +133,21 @@ const Search = (props) => {
         });*/
     } else {
       if (isActive){
-        setResults([]);
+        initState();
+        /*setResults([]);*/
       }
     }
 
     return () => {
       isActive= false;
     }
-  }, [debouncedSearchInput, getState]);
+  }, [debouncedSearchInput, getState, initState]);
 
   useEffect(() => {
     if (location) {
       onLocationChoice(location);
     }
-  }, [location, onLocationChoice], getState);
+  }, [location, onLocationChoice]);
 
   useEffect(() => {
     if (!isShown) {
