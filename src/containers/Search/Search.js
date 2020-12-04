@@ -142,7 +142,7 @@ const Search = (props) => {
     if (location) {
       onLocationChoice(location);
     }
-  }, [location, onLocationChoice]);
+  }, [location, onLocationChoice], getState);
 
   useEffect(() => {
     if (!isShown) {

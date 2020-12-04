@@ -63,7 +63,7 @@ const CurrManager = (props) => {
     return () => {
       isActive= false;
     }
-  }, [locationKey, getState]);
+  }, [locationKey, onError, getState]);
 
   const errorConfirmedHandler = () => {
     setError({error: false, message: ''});
