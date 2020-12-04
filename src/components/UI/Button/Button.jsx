@@ -19,11 +19,18 @@ const SButton= styled.button`
         outline: none;
     }
 
+    @media only screen and (max-width: 56.25em){
+        font-size: 1.2rem;
+    }
+
+    @media only screen and (max-width: 31.25em){
+        font-size: 1rem;
+    }
 `;
 
 const Button= props => {
     return (
-        <SButton>
+        <SButton onClick={props.clicked}>
             {props.children}
         </SButton>
     );

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import GlobalStyle from './style/globalStyle';
-import Typography from './components/UI/Typography/Typography';
-import img from './assets/coverPhoto.jpg';
-import WeatherManger from './containers/WeatherManager/WeatherManager';
+import GlobalStyle from '../style/globalStyle';
+import Typography from '../components/UI/Typography/Typography';
+import img from '../assets/coverPhoto.jpg';
+import WeatherContainer from '../containers/WeatherContainer/WeatherContainer';
 
-const Sdiv= styled.div`
+const SContainer= styled.div`
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -33,7 +33,7 @@ const Sdiv= styled.div`
   }
 `;
 
-const SLabel= styled(Typography)`
+const SAppTitle= styled(Typography)`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
 
@@ -41,27 +41,18 @@ const SLabel= styled(Typography)`
   align-self: start;
 `;
 
-const SWeatherManager= styled(WeatherManger)`
-  grid-row: 2 / span 1;
-  grid-column: 1 / -1;
-
-  justify-self: start;
-  align-self: start;
-`;
-
-
 function App() {
   
   return (
     <>
       <GlobalStyle />
-      <Sdiv>
-        <SLabel 
+      <SContainer>
+        <SAppTitle 
         typographyType= 'heading3'
         uppercase= {true}
         text= 'weather app'/>
-       <SWeatherManager />
-      </Sdiv> 
+       <WeatherContainer />
+      </SContainer> 
     </>
   );
 }

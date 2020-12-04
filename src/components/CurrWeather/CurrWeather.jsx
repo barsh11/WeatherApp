@@ -1,11 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../UI/Typography/Typography';
-import Icon from '../UI/Icon/Icon';
+import WeatherIcon from '../UI/WeatherIcon/WeatherIcon'
 
 const SCurrWeatherWrapper= styled.div`
     display: flex;
     align-items: center;
+
+    align-self: center;
+    
+    margin-right: -13rem;
+
+    @media only screen and (max-width: 75em){
+        margin-right: 0;
+    }
 `;
 
 const SCurrWeather= styled.div`
@@ -21,10 +29,9 @@ const CurrWeather= props => {
     return (
         <SCurrWeatherWrapper
         className= {props.className}>
-            <Icon
-            name= "cloud"
-            color= "white"
-            size= "18rem" />
+            <WeatherIcon
+            src= {props.data?.iconSrc}
+            size= 'big' />
             <SCurrWeather>
                 <Typography
                     className= {props.className}

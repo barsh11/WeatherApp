@@ -3,30 +3,38 @@ import styled, { keyframes } from 'styled-components';
 
 const animation= keyframes`
   0% { margin-bottom: 0 }
-  50% { margin-bottom: 10px }
+  50% { margin-bottom: 15px }
   100% { margin-bottom: 0 }
 `;
 
 const SDot = styled.div`
   background-color: #236f82;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
+  width: 14px;
+  height: 14px;
+  margin: 0 10px;
 
   animation: ${animation} 0.6s ease-in infinite;
   animation-delay: ${props => props.delay};
+
+  &:hover{
+    background-color: #073d4a;
+  }
 `;
 
 const SLoader= styled.div`
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+
+  padding: 2rem;
 `;
 
 
 const Loader= props => {
     return (
-        <SLoader>
+        <SLoader
+        className= {props.className}>
             <SDot delay= "0s" />
             <SDot delay= "0.2s" />
             <SDot delay= "0.4s" />

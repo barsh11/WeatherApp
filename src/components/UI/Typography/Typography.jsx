@@ -5,15 +5,19 @@ const setTypographySize= (type) => {
     switch(type){
         case 'heading1':
             return `
-            8rem;
+            7.6rem;
+
+            @media only screen and (max-width: 37.25em){
+                font-size: 6rem;
+            }
             `;
         case 'heading2':
             return `
-            6rem;
+            5.8rem;
             `;
         case 'heading3':
             return `
-            3rem;
+            2.8rem;
             `;
         case 'body':
             return `

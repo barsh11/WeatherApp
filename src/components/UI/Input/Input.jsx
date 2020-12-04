@@ -6,14 +6,10 @@ const SInputWrapper= styled.div`
     display: flex;
     align-items: center;
 
-    width: 80rem;
+    width: 70rem;
 
     @media only screen and (max-width: 56.25em){
-        width: 90%;
-    }
-
-    @media only screen and (max-width: 31.25em){
-        width: 90%;
+        width: 80%;
     }
 `;
 
@@ -24,6 +20,7 @@ const SInput= styled.input`
     font-size: 2.2rem;
     border-radius: 5rem;
     padding: 2.5rem 4.5rem 2.5rem 5rem;
+    margin: 0 auto;
     box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
     
     &::placeholder{
@@ -44,8 +41,7 @@ const SIcon= styled(Icon)`
 
 const Input= props => {
     return (
-        <SInputWrapper
-        className= {props.className}>
+        <SInputWrapper>
             <SIcon 
             name= "search"
             color= "#ccc"
