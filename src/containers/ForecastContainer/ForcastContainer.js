@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { axiosForecast as axios } from "../../services/axios";
 import _ from "lodash";
 import moment from "moment";
@@ -26,12 +26,36 @@ const ForcastManager = (props) => {
 
   const {locationKey}= props;
 
+  const getState= useCallback((query, isActive) => {
+    axios
+    .get(`${query}`)
+    .then((res) => {
+      let forecastResults = _.cloneDeep(res.data);
+      forecastResults = forecastResults.map((el) => {
+        return {
+          date: toLocalDate(el.DateTime),
+          time: toLocalTime(el.DateTime),
+          value: FtoC(el.Temperature.Value),
+          iconSrc: getIconSrc(el.WeatherIcon),
+        };
+      });
+      if(isActive){
+        setResults(forecastResults);
+      }
+    })
+    .catch((err) => {
+        console.log(err); // to be exchanged with the error modal
+        return [];
+    });
+  }, [])
+
   useEffect(() => {
     let isActive= true;
 
     const query = locationKey;
     if (query) {
-      axios
+      getState(query, isActive);
+      /*axios
         .get(`${query}`)
         .then((res) => {
           let forecastResults = _.cloneDeep(res.data);
@@ -50,7 +74,7 @@ const ForcastManager = (props) => {
         .catch((err) => {
             console.log(err); // to be exchanged with the error modal
             return [];
-        });
+        });*/
     } else {
       if(isActive){
         setResults([]);
@@ -60,7 +84,7 @@ const ForcastManager = (props) => {
     return () => {
       isActive= false;
     }
-  }, [locationKey]);
+  }, [locationKey, getState]);
 
   return <Forecast className={props.className} data={results} />;
 };

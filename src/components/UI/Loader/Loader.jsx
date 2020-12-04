@@ -10,11 +10,11 @@ const animation= keyframes`
 const SDot = styled.div`
   background-color: #236f82;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   margin: 0 10px;
 
-  animation: ${animation} 0.9s ease-in infinite;
+  animation: ${animation} 0.6s ease-in infinite;
   animation-delay: ${props => props.delay};
 
   &:hover{
@@ -25,6 +25,9 @@ const SDot = styled.div`
 const SLoader= styled.div`
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+
+  padding: 2rem;
 `;
 
 

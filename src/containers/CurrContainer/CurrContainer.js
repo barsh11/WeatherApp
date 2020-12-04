@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { axiosConditions as axios } from "../../services/axios";
 import _ from 'lodash';
 import { getIconSrc } from '../../utilities/getIconSrc';
@@ -13,12 +13,31 @@ const CurrManager = (props) => {
 
   const {locationKey, onError}= props;
 
+  const getState= useCallback((query, isActive) => {
+    axios
+    .get(`${query}`)
+    .then((res) => {
+      const results= _.cloneDeep(res.data[0]);
+      if(isActive){
+        setTemperature(results.Temperature.Metric.Value);
+        setDescription(results.WeatherText);
+        setIconNumber(results.WeatherIcon);
+        setError({error: false, message: ''});
+      }
+    })
+    .catch((err) => {
+      onError(true);
+      setError({error: true, message: err.message});
+    });
+  }, [onError])
+
   useEffect(() => {
     let isActive= true;
 
     const query = locationKey;
     if (query) {
-      axios
+      getState(query, isActive);
+      /*axios
         .get(`${query}`)
         .then((res) => {
           const results= _.cloneDeep(res.data[0]);
@@ -32,7 +51,7 @@ const CurrManager = (props) => {
         .catch((err) => {
           onError(true);
           setError({error: true, message: err.message});
-        });
+        });*/
     } else{
       if(isActive){
         setTemperature('');
@@ -44,7 +63,7 @@ const CurrManager = (props) => {
     return () => {
       isActive= false;
     }
-  }, [locationKey, onError]);
+  }, [locationKey, getState]);
 
   const errorConfirmedHandler = () => {
     setError({error: false, message: ''});

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { axiosDaily as axios } from "../../services/axios";
 import _ from "lodash";
 import moment from "moment";
@@ -24,12 +24,36 @@ const DailyManager = (props) => {
 
   const {locationKey}= props;
 
+  const getState= useCallback((query, isActive) => {
+    axios
+    .get(`${query}`)
+    .then((res) => {
+      const results = _.cloneDeep(res.data.DailyForecasts[0]);
+
+      const sunriseTime = results.Sun.Rise;
+      const sunsetTime = results.Sun.Set;
+      if(isActive){
+        setSunrise(toLocalTime(sunriseTime));
+        setSunset(toLocalTime(sunsetTime));
+        setLowTemperature(FtoC(results.Temperature.Minimum.Value));
+        setHighTemperature(FtoC(results.Temperature.Maximum.Value));
+        setRainProb(results.Day.RainProbability);
+        setWind(results.Day.Wind.Speed.Value);
+      }
+    })
+    .catch((err) => {
+      console.log(err); // to be exchanged with the error modal
+      return [];
+    });
+  }, [])
+
   useEffect(() => {
     let isActive= true;
 
     const query = locationKey;
     if (query) {
-      axios
+      getState(query, isActive);
+      /*axios
         .get(`${query}`)
         .then((res) => {
           const results = _.cloneDeep(res.data.DailyForecasts[0]);
@@ -48,7 +72,7 @@ const DailyManager = (props) => {
         .catch((err) => {
           console.log(err); // to be exchanged with the error modal
           return [];
-        });
+        });*/
     } else {
       if(isActive){
         setSunrise("");
@@ -63,7 +87,7 @@ const DailyManager = (props) => {
     return () => {
       isActive= false;
     }
-  }, [locationKey]);
+  }, [locationKey, getState]);
 
   return (
     <CurrParameters

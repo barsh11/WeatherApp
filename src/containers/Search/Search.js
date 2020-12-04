@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import { axiosLocations as axios } from "../../services/axios";
 import useDebounce from "../../hooks/useDebounce";
 import Input from "../../components/UI/Input/Input";
+import Loader from '../../components/UI/Loader/Loader';
 
 const SSearch = styled.form`
   min-width: 80%;
@@ -72,13 +73,39 @@ const Search = (props) => {
 
   const {onLocationChoice}= props;
 
+  const getState= useCallback((query, isActive) => {
+    axios
+    .get("", {
+      params: { ...axios.params, q: query },
+    })
+    .then((res) => {
+      let limitedResults = [];
+      const limit = 10;
+      for (let i = 0; i < limit; i++) {
+        if (res.data[i]) {
+          limitedResults[i] = { ...res.data[i] };
+        }
+      }
+      if(isActive){
+        setIsSearching(false);
+        setResults(limitedResults);
+        setIsShown(true);
+      }
+    })
+    .catch((err) => {
+      console.log(err); // to be exchanged with the error modal
+      return [];
+    });
+  }, [])
+
   useEffect(() => {
     let isActive= true;
 
     if (debouncedSearchInput) {
       setIsSearching(true);
       const query = debouncedSearchInput;
-      axios
+      getState(query, isActive);
+      /*axios
         .get("", {
           params: { ...axios.params, q: query },
         })
@@ -99,7 +126,7 @@ const Search = (props) => {
         .catch((err) => {
           console.log(err); // to be exchanged with the error modal
           return [];
-        });
+        });*/
     } else {
       if (isActive){
         setResults([]);
@@ -109,7 +136,7 @@ const Search = (props) => {
     return () => {
       isActive= false;
     }
-  }, [debouncedSearchInput]);
+  }, [debouncedSearchInput, getState]);
 
   useEffect(() => {
     if (location) {
@@ -136,7 +163,7 @@ const Search = (props) => {
   };
 
   let content;
-  if (results.length > 0) {
+  if ((results.length > 0) && !isSearching) {
     content = (
       <SUl>
         {results.map((el, i) => (
@@ -148,6 +175,8 @@ const Search = (props) => {
         ))}
       </SUl>
     );
+  } else if(isSearching){
+    content= <SUl><SLi><Loader/></SLi></SUl>
   }
 
   return (
