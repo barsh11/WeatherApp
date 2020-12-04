@@ -11,28 +11,40 @@ const CurrManager = (props) => {
   const [description, setDescription] = useState("");
   const [iconNumber, setIconNumber]= useState(null);
 
+  const {locationKey, onError}= props;
+
   useEffect(() => {
-    const query = props.locationKey;
+    let isActive= true;
+
+    const query = locationKey;
     if (query) {
       axios
         .get(`${query}`)
         .then((res) => {
           const results= _.cloneDeep(res.data[0]);
-          setTemperature(results.Temperature.Metric.Value);
-          setDescription(results.WeatherText);
-          setIconNumber(results.WeatherIcon);
-          setError({error: false, message: ''});
+          if(isActive){
+            setTemperature(results.Temperature.Metric.Value);
+            setDescription(results.WeatherText);
+            setIconNumber(results.WeatherIcon);
+            setError({error: false, message: ''});
+          }
         })
         .catch((err) => {
-          props.onError(true);
+          onError(true);
           setError({error: true, message: err.message});
         });
     } else{
-      setTemperature('');
-      setDescription('');
-      setIconNumber(null);
+      if(isActive){
+        setTemperature('');
+        setDescription('');
+        setIconNumber(null);
+      }
     }
-  }, [props]);
+
+    return () => {
+      isActive= false;
+    }
+  }, [locationKey, onError]);
 
   const errorConfirmedHandler = () => {
     setError({error: false, message: ''});

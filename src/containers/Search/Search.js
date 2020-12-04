@@ -70,7 +70,11 @@ const Search = (props) => {
 
   const debouncedSearchInput = useDebounce(searchInput, 500);
 
+  const {onLocationChoice}= props;
+
   useEffect(() => {
+    let isActive= true;
+
     if (debouncedSearchInput) {
       setIsSearching(true);
       const query = debouncedSearchInput;
@@ -86,24 +90,32 @@ const Search = (props) => {
               limitedResults[i] = { ...res.data[i] };
             }
           }
-          setIsSearching(false);
-          setResults(limitedResults);
-          setIsShown(true);
+          if(isActive){
+            setIsSearching(false);
+            setResults(limitedResults);
+            setIsShown(true);
+          }
         })
         .catch((err) => {
           console.log(err); // to be exchanged with the error modal
           return [];
         });
     } else {
-      setResults([]);
+      if (isActive){
+        setResults([]);
+      }
+    }
+
+    return () => {
+      isActive= false;
     }
   }, [debouncedSearchInput]);
 
   useEffect(() => {
     if (location) {
-      props.onLocationChoice(location);
+      onLocationChoice(location);
     }
-  }, [location]);
+  }, [location, onLocationChoice]);
 
   useEffect(() => {
     if (!isShown) {

@@ -24,8 +24,12 @@ const toLocalTime = (ISO8601String) => {
 const ForcastManager = (props) => {
   const [results, setResults] = useState([]);
 
+  const {locationKey}= props;
+
   useEffect(() => {
-    const query = props.locationKey;
+    let isActive= true;
+
+    const query = locationKey;
     if (query) {
       axios
         .get(`${query}`)
@@ -39,16 +43,24 @@ const ForcastManager = (props) => {
               iconSrc: getIconSrc(el.WeatherIcon),
             };
           });
-          setResults(forecastResults);
+          if(isActive){
+            setResults(forecastResults);
+          }
         })
         .catch((err) => {
-          console.log(err); // to be exchanged with the error modal
-          return [];
+            console.log(err); // to be exchanged with the error modal
+            return [];
         });
     } else {
-      setResults([]);
+      if(isActive){
+        setResults([]);
+      }
     }
-  }, [props.locationKey]);
+
+    return () => {
+      isActive= false;
+    }
+  }, [locationKey]);
 
   return <Forecast className={props.className} data={results} />;
 };

@@ -22,8 +22,12 @@ const DailyManager = (props) => {
   const [rainProb, setRainProb] = useState("");
   const [wind, setWind] = useState("");
 
+  const {locationKey}= props;
+
   useEffect(() => {
-    const query = props.locationKey;
+    let isActive= true;
+
+    const query = locationKey;
     if (query) {
       axios
         .get(`${query}`)
@@ -32,27 +36,34 @@ const DailyManager = (props) => {
 
           const sunriseTime = results.Sun.Rise;
           const sunsetTime = results.Sun.Set;
-
-          setSunrise(toLocalTime(sunriseTime));
-          setSunset(toLocalTime(sunsetTime));
-          setLowTemperature(FtoC(results.Temperature.Minimum.Value));
-          setHighTemperature(FtoC(results.Temperature.Maximum.Value));
-          setRainProb(results.Day.RainProbability);
-          setWind(results.Day.Wind.Speed.Value);
+          if(isActive){
+            setSunrise(toLocalTime(sunriseTime));
+            setSunset(toLocalTime(sunsetTime));
+            setLowTemperature(FtoC(results.Temperature.Minimum.Value));
+            setHighTemperature(FtoC(results.Temperature.Maximum.Value));
+            setRainProb(results.Day.RainProbability);
+            setWind(results.Day.Wind.Speed.Value);
+          }
         })
         .catch((err) => {
           console.log(err); // to be exchanged with the error modal
           return [];
         });
     } else {
-      setSunrise('');
-      setSunset('');
-      setLowTemperature('');
-      setHighTemperature('');
-      setRainProb('');
-      setWind('');
+      if(isActive){
+        setSunrise("");
+        setSunset("");
+        setLowTemperature("");
+        setHighTemperature("");
+        setRainProb("");
+        setWind("");
+      }
     }
-  }, [props.locationKey]);
+
+    return () => {
+      isActive= false;
+    }
+  }, [locationKey]);
 
   return (
     <CurrParameters
