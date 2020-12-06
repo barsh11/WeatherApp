@@ -40,27 +40,9 @@ const CurrManager = (props) => {
     const query = locationKey;
     if (query) {
       getState(query, isActive);
-      /*axios
-        .get(`${query}`)
-        .then((res) => {
-          const results= _.cloneDeep(res.data[0]);
-          if(isActive){
-            setTemperature(results.Temperature.Metric.Value);
-            setDescription(results.WeatherText);
-            setIconNumber(results.WeatherIcon);
-            setError({error: false, message: ''});
-          }
-        })
-        .catch((err) => {
-          onError(true);
-          setError({error: true, message: err.message});
-        });*/
     } else {
       if (isActive) {
         initState();
-        /*setTemperature('');
-        setDescription('');
-        setIconNumber(null);*/
       }
     }
 

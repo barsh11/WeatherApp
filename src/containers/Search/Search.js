@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
+import _ from "lodash";
 import { axiosLocations as axios } from "../../services/axios";
 import useDebounce from "../../hooks/useDebounce";
 import Input from "../../components/UI/Input/Input";
@@ -68,7 +69,6 @@ const Search = (props) => {
   const {onLocationChoice, init, onError}= props;
 
   const initState= useCallback(() => {
-    /*setResults([]);*/
     setSearchInput('');
     setResults([]);
     setIsSearching(false);
@@ -92,7 +92,7 @@ const Search = (props) => {
       const limit = 10;
       for (let i = 0; i < limit; i++) {
         if (res.data[i]) {
-          limitedResults[i] = { ...res.data[i] };
+          limitedResults[i] = _.cloneDeep(res.data[i]);
         }
       }
       if(isActive){
@@ -114,32 +114,9 @@ const Search = (props) => {
       setIsSearching(true);
       const query = debouncedSearchInput;
       getState(query, isActive);
-      /*axios
-        .get("", {
-          params: { ...axios.params, q: query },
-        })
-        .then((res) => {
-          let limitedResults = [];
-          const limit = 10;
-          for (let i = 0; i < limit; i++) {
-            if (res.data[i]) {
-              limitedResults[i] = { ...res.data[i] };
-            }
-          }
-          if(isActive){
-            setIsSearching(false);
-            setResults(limitedResults);
-            setIsShown(true);
-          }
-        })
-        .catch((err) => {
-          console.log(err); // to be exchanged with the error modal
-          return [];
-        });*/
     } else {
       if (isActive){
         initState();
-        /*setResults([]);*/
       }
     }
 
@@ -155,8 +132,16 @@ const Search = (props) => {
   }, [location, onLocationChoice]);
 
   useEffect(() => {
+    let isActive= true;
+
     if (!isShown) {
-      setSearchInput("");
+      if(isActive){
+        setSearchInput("");
+      }
+    }
+
+    return () => {
+      isActive= false;
     }
   }, [isShown]);
 

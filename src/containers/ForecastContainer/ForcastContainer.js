@@ -59,30 +59,9 @@ const ForcastManager = (props) => {
     const query = locationKey;
     if (query) {
       getState(query, isActive);
-      /*axios
-        .get(`${query}`)
-        .then((res) => {
-          let forecastResults = _.cloneDeep(res.data);
-          forecastResults = forecastResults.map((el) => {
-            return {
-              date: toLocalDate(el.DateTime),
-              time: toLocalTime(el.DateTime),
-              value: FtoC(el.Temperature.Value),
-              iconSrc: getIconSrc(el.WeatherIcon),
-            };
-          });
-          if(isActive){
-            setResults(forecastResults);
-          }
-        })
-        .catch((err) => {
-            console.log(err); // to be exchanged with the error modal
-            return [];
-        });*/
     } else {
       if(isActive){
         initState();
-        /*setResults([]);*/
       }
     }
 

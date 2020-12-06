@@ -62,35 +62,9 @@ const DailyManager = (props) => {
     const query = locationKey;
     if (query) {
       getState(query, isActive);
-      /*axios
-        .get(`${query}`)
-        .then((res) => {
-          const results = _.cloneDeep(res.data.DailyForecasts[0]);
-
-          const sunriseTime = results.Sun.Rise;
-          const sunsetTime = results.Sun.Set;
-          if(isActive){
-            setSunrise(toLocalTime(sunriseTime));
-            setSunset(toLocalTime(sunsetTime));
-            setLowTemperature(FtoC(results.Temperature.Minimum.Value));
-            setHighTemperature(FtoC(results.Temperature.Maximum.Value));
-            setRainProb(results.Day.RainProbability);
-            setWind(results.Day.Wind.Speed.Value);
-          }
-        })
-        .catch((err) => {
-          console.log(err); // to be exchanged with the error modal
-          return [];
-        });*/
     } else {
       if(isActive){
         initState();
-        /*setSunrise("");
-        setSunset("");
-        setLowTemperature("");
-        setHighTemperature("");
-        setRainProb("");
-        setWind("");*/
       }
     }
 
