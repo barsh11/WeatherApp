@@ -3,7 +3,6 @@ import { ReactSVG } from 'react-svg';
 import styled, { css } from 'styled-components';
 
 const SReactSVG= styled(ReactSVG)`
-margin-bottom: 2rem;
 
 svg{
     fill: black;

@@ -82,8 +82,8 @@ const Search = (props) => {
     }
   }, [init, initState]);
 
-  const getState = useCallback(
-    (query, isActive) => {
+  const getState = useCallback((query, isActive) => {
+      setIsSearching(true);
       axios
         .get("", {
           params: { ...axios.params, q: query },
@@ -97,8 +97,8 @@ const Search = (props) => {
             }
           }
           if (isActive) {
-            setResults(limitedResults);
             setIsShown(true);
+            setResults(limitedResults);
             setIsSearching(false);
           }
         })
@@ -110,11 +110,10 @@ const Search = (props) => {
     [onError]
   );
 
-  useEffect(() => {
+  useEffect( () => {
     let isActive = true;
 
     if (debouncedSearchInput) {
-      setIsSearching(true);
       const query = debouncedSearchInput;
       getState(query, isActive);
     } else {
@@ -131,21 +130,14 @@ const Search = (props) => {
   useEffect(() => {
     if (location) {
       onLocationChoice(location);
+      initState();
     }
-  }, [location, onLocationChoice]);
+  }, [location, onLocationChoice, initState]);
 
   useEffect(() => {
-    let isActive = true;
-
     if (!isShown) {
-      if (isActive) {
         setSearchInput("");
-      }
     }
-
-    return () => {
-      isActive = false;
-    };
   }, [isShown]);
 
   const clickHandler = (chosenLocationIndex) => {
@@ -156,11 +148,11 @@ const Search = (props) => {
         city: chosenLocation.LocalizedName,
         countryId: chosenLocation.Country.ID,
       });
-      setIsShown(false);
     }
   };
 
   let content;
+
   if (results.length > 0 && !isSearching) {
     content = (
       <SUl>
