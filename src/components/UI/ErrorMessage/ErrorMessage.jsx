@@ -6,69 +6,103 @@ import Button from '../Button/Button';
 import Backdrop from '../Backdrop/Backdrop';
 
 const SWrapper= styled.div`
+grid-row: 2 / span 1;
+grid-column: 1 / -1;
+
+@media only screen and (max-width: 56.25em){
+    grid-row: 2 / span 2;
+  }
+
+position: relative;
+width: 100%;
+height: 100%;
 `;
 
 const SErrorMessageWrapper= styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+height: 140%;
+width: 25%;
 
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+@media only screen and (min-width: 75em){
+    height: 140%;
+    width: 30%;
+}
 
-    background-color: white;
-    width: 25vw;
-    height: 80vh;
+@media only screen and (max-width: 75em){
+    height: 120%;
+    width: 35%;
+}
+
+@media only screen and (max-width: 56.25em){
+    height: 100%;
+    width: 45%;
+  }
+
+@media only screen and (max-width: 37.25em){
+    height: 80%;
+    width: 55%;
+}
+
+@media only screen and (max-width: 31.25em){
+    height: 60%;
+    width: 65%;
+}
+
+position: absolute;
+margin: auto;
+left: 0;
+right: 0;
+
+transition: all 0.3s ease-out;
+
+display: grid;
+  grid-template-rows: 1.8fr 1fr;
+  grid-template-columns: 1fr;
+
     z-index: 101;
+    text-align: center;
     box-shadow: 4px 2px 15px rgba(0,0,0,0.2);
-
-    @media only screen and (max-width: 56.25em){
-        width: 40vw;
-    }
-
-    @media only screen and (max-width: 31.25em){
-        width: 60vw;
-    }
 `;
 
 const SIconWrapper= styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;    
+  grid-row: 1 / span 1;
+  grid-column: 1 / -1;
 
-    text-align: center;
-    background-color: #236f82;
-    width: 100%;
-    height: 55%;
-    padding: 3rem;
+  align-self: center;
+
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+width: 100%;
+height: 100%;
+background-image: linear-gradient(to top, #083540, #236f82);
+
 `;
 
-const SIcon= styled(Icon)`
-    margin-bottom: 2rem;
-`;
+const SDescriptionWrapper= styled.div`
+    grid-row: 2 / span 1;
+    grid-column: 1 / -1;
 
-const SErrorDescription= styled.div`
+    justify-self: center;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 
     width: 100%;
-    height: 40%;
-    padding: 3rem;
+    height: 100%;
+    padding: 15px;
+    background-color: #e1e3e1;
+
 `;
 
 
 const ErrorMessage= props => {
 
     return (
-        <SWrapper
-        className= {props.className}>
+        <SWrapper>
             <Backdrop show= {props.show} clicked={props.closeErrorMessage}/>
             <SErrorMessageWrapper
             style= {{
@@ -76,24 +110,23 @@ const ErrorMessage= props => {
                 opacity: props.show ? '1' : '0'
             }}>
                 <SIconWrapper>
-                    <SIcon
-                    name= 'error'
+                    <Icon
+                    name= 'warning'
                     color= 'white'
-                    size= '10rem'
+                    size= '7rem'
                     />
                     <Typography 
                     typographyType= 'caption'
-                    bold= {true}
                     uppercase= {true}
                     text= 'an error occured'/>
                 </SIconWrapper>
-                <SErrorDescription>
+                <SDescriptionWrapper>
                     <Typography 
                     typographyType= 'caption'
                     color= '#8c918d'
                     text= {props.message}/>
-                    <Button clicked={props.closeErrorMessage}>Retry</Button> {/* to be changed */}
-                </SErrorDescription>
+                    <Button clicked={props.closeErrorMessage}>Retry</Button>
+                </SDescriptionWrapper>
             </SErrorMessageWrapper>
         </SWrapper>
     );

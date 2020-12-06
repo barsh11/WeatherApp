@@ -5,6 +5,7 @@ const SButton= styled.button`
     border: none;
     cursor: pointer;
     padding: 1.8rem 3.2rem;
+    margin-top: 2rem;
     border-radius: 100px;
     background-color: #236f82;
 
