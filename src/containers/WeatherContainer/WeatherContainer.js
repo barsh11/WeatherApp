@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Search from "../Search/Search";
 import CurrContainer from "../CurrContainer/CurrContainer";
 import DailyContainer from "../DailyContainer/DailyContainer";
 import ForecastContainer from "../ForecastContainer/ForcastContainer";
+import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
 
 const SWeatherContainer = styled.div`
 grid-row: 2 / span 1;
@@ -70,54 +71,66 @@ const SForecastContainer = styled(ForecastContainer)`
 `;
 
 const WeatherContainer = (props) => {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({ isError: false, message: "" });
   const [locationKey, setLocationKey] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
   useEffect(() => {
-    if (error) {
-      setLocationKey("");
-      setCity("");
-      setCountry("");
 
-      setError(false);
-    }
-  }, [error]);
+  }, [error.isError])
 
   const onLocationChoiceHandler = (locationData) => {
-    setLocationKey(locationData.locationKey);
-    setCity(locationData.city);
-    setCountry(locationData.countryId);
+    setLocationKey(locationData ? locationData.locationKey : '');
+    setCity(locationData ? locationData.city : '');
+    setCountry(locationData ? locationData.countryId : '');
   };
 
-  const onErrorHandler = (isError) => {
-    setError(true);
+  const onErrorHandler = (err) => {
+    if(!error.isError){
+      setError({isError: true, message: err?.message });
+    }
+  };
+
+  const confirmedErrorSolve = () => {
+    if(error.isError){
+      onLocationChoiceHandler(null);
+      setError({ isError: false, message: "" });
+    }
   };
 
   return (
     <SWeatherContainer>
-      <SSearch onLocationChoice={onLocationChoiceHandler} />
-      {!locationKey ? (
-        null
-      ) : (
+      <SSearch 
+      onLocationChoice={onLocationChoiceHandler} 
+      init={error.isError}
+      onError={onErrorHandler}/>
+      {error.isError ? (
+        <ErrorMessage
+          show={true}
+          closeErrorMessage={confirmedErrorSolve}
+          message={error.message}
+        />
+      ) : (!locationKey ? null : (
         [
           <SCurrContainer
-            key={'CurrContainer'}
-            locationKey={locationKey}
             onError={onErrorHandler}
-            data={{
+            key={"CurrContainer"}
+            locationKey={!error.isError ? locationKey : null}
+            data={locationKey && {
               city: city,
               country: country,
             }}
           />,
           <SDailyContainer 
-          key= {'DailyContainer'}
-          locationKey={locationKey} />,
-          <SForecastContainer 
-          key= {'ForecastContainer'}
-          locationKey={locationKey} />,
-        ]
+          onError={onErrorHandler}
+          key={"DailyContainer"} locationKey={locationKey} />,
+          <SForecastContainer
+          onError={onErrorHandler}  
+          key={"ForecastContainer"}
+            locationKey={locationKey}
+          />,
+        ])
       )}
     </SWeatherContainer>
   );

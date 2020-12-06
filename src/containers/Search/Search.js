@@ -15,12 +15,6 @@ const SSearch = styled.form`
   position: relative;
 `;
 
-/*$bp-largest: 75em; //1200px
-$bp-large: 68.75em; //1100px
-$bp-medium: 56.25em; //900px
-$bp-small:  37.5em; //600px
-$bp-smallest: 31.25em; //500px*/
-
 const SUl = styled.ul`
   list-style: none;
   font-size: 2rem;
@@ -71,11 +65,22 @@ const Search = (props) => {
 
   const debouncedSearchInput = useDebounce(searchInput, 500);
 
-  const {onLocationChoice}= props;
+  const {onLocationChoice, init, onError}= props;
 
   const initState= useCallback(() => {
+    /*setResults([]);*/
+    setSearchInput('');
     setResults([]);
+    setIsSearching(false);
+    setLocation(null);
+    setIsShown(false);
   }, [])
+
+  useEffect(() => {
+    if(init){
+      initState();
+    }
+  }, [init, initState]);
 
   const getState= useCallback((query, isActive) => {
     axios
@@ -97,10 +102,10 @@ const Search = (props) => {
       }
     })
     .catch((err) => {
-      console.log(err); // to be exchanged with the error modal
+      onError(err);
       return [];
     });
-  }, [])
+  }, [onError]);
 
   useEffect(() => {
     let isActive= true;
@@ -141,7 +146,7 @@ const Search = (props) => {
     return () => {
       isActive= false;
     }
-  }, [debouncedSearchInput, getState, initState]);
+  }, [debouncedSearchInput, onError, getState, initState]);
 
   useEffect(() => {
     if (location) {

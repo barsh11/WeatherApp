@@ -22,7 +22,7 @@ const DailyManager = (props) => {
   const [rainProb, setRainProb] = useState("");
   const [wind, setWind] = useState("");
 
-  const {locationKey}= props;
+  const {locationKey, onError}= props;
 
   const initState= useCallback(() => {
     setSunrise("");
@@ -51,10 +51,10 @@ const DailyManager = (props) => {
       }
     })
     .catch((err) => {
-      console.log(err); // to be exchanged with the error modal
+      onError(err);
       return [];
     });
-  }, [])
+  }, [onError])
 
   useEffect(() => {
     let isActive= true;
@@ -97,7 +97,7 @@ const DailyManager = (props) => {
     return () => {
       isActive= false;
     }
-  }, [locationKey, getState, initState]);
+  }, [locationKey, onError, getState, initState]);
 
   return (
     <CurrParameters

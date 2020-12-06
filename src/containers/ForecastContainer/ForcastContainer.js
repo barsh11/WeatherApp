@@ -24,7 +24,7 @@ const toLocalTime = (ISO8601String) => {
 const ForcastManager = (props) => {
   const [results, setResults] = useState([]);
 
-  const {locationKey}= props;
+  const {locationKey, onError}= props;
 
   const initState= useCallback(() => {
     setResults([]);
@@ -48,10 +48,10 @@ const ForcastManager = (props) => {
       }
     })
     .catch((err) => {
-        console.log(err); // to be exchanged with the error modal
+      onError(err);
         return [];
     });
-  }, [])
+  }, [onError])
 
   useEffect(() => {
     let isActive= true;
@@ -89,7 +89,7 @@ const ForcastManager = (props) => {
     return () => {
       isActive= false;
     }
-  }, [locationKey, getState, initState]);
+  }, [locationKey, onError, getState, initState]);
 
   return <Forecast className={props.className} data={results} />;
 };
