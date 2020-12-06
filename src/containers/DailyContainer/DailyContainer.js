@@ -22,9 +22,9 @@ const DailyManager = (props) => {
   const [rainProb, setRainProb] = useState("");
   const [wind, setWind] = useState("");
 
-  const {locationKey, onError}= props;
+  const { locationKey, onError } = props;
 
-  const initState= useCallback(() => {
+  const initState = useCallback(() => {
     setSunrise("");
     setSunset("");
     setLowTemperature("");
@@ -33,44 +33,47 @@ const DailyManager = (props) => {
     setWind("");
   }, []);
 
-  const getState= useCallback((query, isActive) => {
-    axios
-    .get(`${query}`)
-    .then((res) => {
-      const results = _.cloneDeep(res.data.DailyForecasts[0]);
+  const getState = useCallback(
+    (query, isActive) => {
+      axios
+        .get(`${query}`)
+        .then((res) => {
+          const results = _.cloneDeep(res.data.DailyForecasts[0]);
 
-      const sunriseTime = results.Sun.Rise;
-      const sunsetTime = results.Sun.Set;
-      if(isActive){
-        setSunrise(toLocalTime(sunriseTime));
-        setSunset(toLocalTime(sunsetTime));
-        setLowTemperature(FtoC(results.Temperature.Minimum.Value));
-        setHighTemperature(FtoC(results.Temperature.Maximum.Value));
-        setRainProb(results.Day.RainProbability);
-        setWind(results.Day.Wind.Speed.Value);
-      }
-    })
-    .catch((err) => {
-      onError(err);
-      return [];
-    });
-  }, [onError])
+          const sunriseTime = results.Sun.Rise;
+          const sunsetTime = results.Sun.Set;
+          if (isActive) {
+            setSunrise(toLocalTime(sunriseTime));
+            setSunset(toLocalTime(sunsetTime));
+            setLowTemperature(FtoC(results.Temperature.Minimum.Value));
+            setHighTemperature(FtoC(results.Temperature.Maximum.Value));
+            setRainProb(results.Day.RainProbability);
+            setWind(results.Day.Wind.Speed.Value);
+          }
+        })
+        .catch((err) => {
+          onError(err);
+          return [];
+        });
+    },
+    [onError]
+  );
 
   useEffect(() => {
-    let isActive= true;
+    let isActive = true;
 
     const query = locationKey;
     if (query) {
       getState(query, isActive);
     } else {
-      if(isActive){
+      if (isActive) {
         initState();
       }
     }
 
     return () => {
-      isActive= false;
-    }
+      isActive = false;
+    };
   }, [locationKey, onError, getState, initState]);
 
   return (

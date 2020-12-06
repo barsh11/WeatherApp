@@ -24,50 +24,53 @@ const toLocalTime = (ISO8601String) => {
 const ForcastManager = (props) => {
   const [results, setResults] = useState([]);
 
-  const {locationKey, onError}= props;
+  const { locationKey, onError } = props;
 
-  const initState= useCallback(() => {
+  const initState = useCallback(() => {
     setResults([]);
   }, []);
 
-  const getState= useCallback((query, isActive) => {
-    axios
-    .get(`${query}`)
-    .then((res) => {
-      let forecastResults = _.cloneDeep(res.data);
-      forecastResults = forecastResults.map((el) => {
-        return {
-          date: toLocalDate(el.DateTime),
-          time: toLocalTime(el.DateTime),
-          value: FtoC(el.Temperature.Value),
-          iconSrc: getIconSrc(el.WeatherIcon),
-        };
-      });
-      if(isActive){
-        setResults(forecastResults);
-      }
-    })
-    .catch((err) => {
-      onError(err);
-        return [];
-    });
-  }, [onError])
+  const getState = useCallback(
+    (query, isActive) => {
+      axios
+        .get(`${query}`)
+        .then((res) => {
+          let forecastResults = _.cloneDeep(res.data);
+          forecastResults = forecastResults.map((el) => {
+            return {
+              date: toLocalDate(el.DateTime),
+              time: toLocalTime(el.DateTime),
+              value: FtoC(el.Temperature.Value),
+              iconSrc: getIconSrc(el.WeatherIcon),
+            };
+          });
+          if (isActive) {
+            setResults(forecastResults);
+          }
+        })
+        .catch((err) => {
+          onError(err);
+          return [];
+        });
+    },
+    [onError]
+  );
 
   useEffect(() => {
-    let isActive= true;
+    let isActive = true;
 
     const query = locationKey;
     if (query) {
       getState(query, isActive);
     } else {
-      if(isActive){
+      if (isActive) {
         initState();
       }
     }
 
     return () => {
-      isActive= false;
-    }
+      isActive = false;
+    };
   }, [locationKey, onError, getState, initState]);
 
   return <Forecast className={props.className} data={results} />;

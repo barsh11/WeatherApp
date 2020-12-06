@@ -17,22 +17,25 @@ const CurrManager = (props) => {
     setIconNumber(null);
   }, []);
 
-  const getState = useCallback((query, isActive) => {
-    axios
-      .get(`${query}`)
-      .then((res) => {
-        const results = _.cloneDeep(res.data[0]);
-        if (isActive) {
-          setTemperature(results.Temperature.Metric.Value);
-          setDescription(results.WeatherText);
-          setIconNumber(results.WeatherIcon);
-        }
-      })
-      .catch((err) => {
-        onError(err);
-        return [];
-      });
-  }, [onError]);
+  const getState = useCallback(
+    (query, isActive) => {
+      axios
+        .get(`${query}`)
+        .then((res) => {
+          const results = _.cloneDeep(res.data[0]);
+          if (isActive) {
+            setTemperature(results.Temperature.Metric.Value);
+            setDescription(results.WeatherText);
+            setIconNumber(results.WeatherIcon);
+          }
+        })
+        .catch((err) => {
+          onError(err);
+          return [];
+        });
+    },
+    [onError]
+  );
 
   useEffect(() => {
     let isActive = true;

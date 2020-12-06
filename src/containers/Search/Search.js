@@ -4,7 +4,7 @@ import _ from "lodash";
 import { axiosLocations as axios } from "../../services/axios";
 import useDebounce from "../../hooks/useDebounce";
 import Input from "../../components/UI/Input/Input";
-import Loader from '../../components/UI/Loader/Loader';
+import Loader from "../../components/UI/Loader/Loader";
 
 const SSearch = styled.form`
   min-width: 80%;
@@ -66,63 +66,66 @@ const Search = (props) => {
 
   const debouncedSearchInput = useDebounce(searchInput, 500);
 
-  const {onLocationChoice, init, onError}= props;
+  const { onLocationChoice, init, onError } = props;
 
-  const initState= useCallback(() => {
-    setSearchInput('');
+  const initState = useCallback(() => {
+    setSearchInput("");
     setResults([]);
     setIsSearching(false);
     setLocation(null);
     setIsShown(false);
-  }, [])
+  }, []);
 
   useEffect(() => {
-    if(init){
+    if (init) {
       initState();
     }
   }, [init, initState]);
 
-  const getState= useCallback((query, isActive) => {
-    axios
-    .get("", {
-      params: { ...axios.params, q: query },
-    })
-    .then((res) => {
-      let limitedResults = [];
-      const limit = 10;
-      for (let i = 0; i < limit; i++) {
-        if (res.data[i]) {
-          limitedResults[i] = _.cloneDeep(res.data[i]);
-        }
-      }
-      if(isActive){
-        setResults(limitedResults);
-        setIsShown(true);
-        setIsSearching(false);
-      }
-    })
-    .catch((err) => {
-      onError(err);
-      return [];
-    });
-  }, [onError]);
+  const getState = useCallback(
+    (query, isActive) => {
+      axios
+        .get("", {
+          params: { ...axios.params, q: query },
+        })
+        .then((res) => {
+          let limitedResults = [];
+          const limit = 10;
+          for (let i = 0; i < limit; i++) {
+            if (res.data[i]) {
+              limitedResults[i] = _.cloneDeep(res.data[i]);
+            }
+          }
+          if (isActive) {
+            setResults(limitedResults);
+            setIsShown(true);
+            setIsSearching(false);
+          }
+        })
+        .catch((err) => {
+          onError(err);
+          return [];
+        });
+    },
+    [onError]
+  );
 
   useEffect(() => {
-    let isActive= true;
+    let isActive = true;
 
     if (debouncedSearchInput) {
       setIsSearching(true);
       const query = debouncedSearchInput;
       getState(query, isActive);
     } else {
-      if (isActive){
+      if (isActive) {
         initState();
       }
     }
 
     return () => {
-      isActive= false;
-    }
+      isActive = false;
+    };
   }, [debouncedSearchInput, onError, getState, initState]);
 
   useEffect(() => {
@@ -132,17 +135,17 @@ const Search = (props) => {
   }, [location, onLocationChoice]);
 
   useEffect(() => {
-    let isActive= true;
+    let isActive = true;
 
     if (!isShown) {
-      if(isActive){
+      if (isActive) {
         setSearchInput("");
       }
     }
 
     return () => {
-      isActive= false;
-    }
+      isActive = false;
+    };
   }, [isShown]);
 
   const clickHandler = (chosenLocationIndex) => {
@@ -158,7 +161,7 @@ const Search = (props) => {
   };
 
   let content;
-  if ((results.length > 0) && !isSearching) {
+  if (results.length > 0 && !isSearching) {
     content = (
       <SUl>
         {results.map((el, i) => (
@@ -170,8 +173,14 @@ const Search = (props) => {
         ))}
       </SUl>
     );
-  } else if(isSearching){
-    content= <SUl><SLi><Loader/></SLi></SUl>
+  } else if (isSearching) {
+    content = (
+      <SUl>
+        <SLi>
+          <Loader />
+        </SLi>
+      </SUl>
+    );
   }
 
   return (

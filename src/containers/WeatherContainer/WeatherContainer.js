@@ -76,24 +76,22 @@ const WeatherContainer = (props) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
-  useEffect(() => {
-
-  }, [error.isError])
+  useEffect(() => {}, [error.isError]);
 
   const onLocationChoiceHandler = (locationData) => {
-    setLocationKey(locationData ? locationData.locationKey : '');
-    setCity(locationData ? locationData.city : '');
-    setCountry(locationData ? locationData.countryId : '');
+    setLocationKey(locationData ? locationData.locationKey : "");
+    setCity(locationData ? locationData.city : "");
+    setCountry(locationData ? locationData.countryId : "");
   };
 
   const onErrorHandler = (err) => {
-    if(!error.isError){
-      setError({isError: true, message: err?.message });
+    if (!error.isError) {
+      setError({ isError: true, message: err?.message });
     }
   };
 
   const confirmedErrorSolve = () => {
-    if(error.isError){
+    if (error.isError) {
       onLocationChoiceHandler(null);
       setError({ isError: false, message: "" });
     }
@@ -101,36 +99,41 @@ const WeatherContainer = (props) => {
 
   return (
     <SWeatherContainer>
-      <SSearch 
-      onLocationChoice={onLocationChoiceHandler} 
-      init={error.isError}
-      onError={onErrorHandler}/>
+      <SSearch
+        onLocationChoice={onLocationChoiceHandler}
+        init={error.isError}
+        onError={onErrorHandler}
+      />
       {error.isError ? (
         <ErrorMessage
           show={true}
           closeErrorMessage={confirmedErrorSolve}
           message={error.message}
         />
-      ) : (!locationKey ? null : (
+      ) : !locationKey ? null : (
         [
           <SCurrContainer
             onError={onErrorHandler}
             key={"CurrContainer"}
             locationKey={!error.isError ? locationKey : null}
-            data={locationKey && {
-              city: city,
-              country: country,
-            }}
+            data={
+              locationKey && {
+                city: city,
+                country: country,
+              }
+            }
           />,
-          <SDailyContainer 
-          onError={onErrorHandler}
-          key={"DailyContainer"} locationKey={locationKey} />,
-          <SForecastContainer
-          onError={onErrorHandler}  
-          key={"ForecastContainer"}
+          <SDailyContainer
+            onError={onErrorHandler}
+            key={"DailyContainer"}
             locationKey={locationKey}
           />,
-        ])
+          <SForecastContainer
+            onError={onErrorHandler}
+            key={"ForecastContainer"}
+            locationKey={locationKey}
+          />,
+        ]
       )}
     </SWeatherContainer>
   );
