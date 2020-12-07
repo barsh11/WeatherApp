@@ -2,7 +2,7 @@
 export const API_KEY = "rTGniFV7iD67NaurbnaOz7ccbqEG62AR";
 
 // BASE URL
-export const BASE_URL = "http://dataservice.accuweather.com/";
+export const BASE_URL = "https://dataservice.accuweather.com/";
 
 // LOCATIONS
 export const BASE_URL_LOCATIONS = `${BASE_URL}locations/v1/cities/autocomplete`;
