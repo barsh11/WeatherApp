@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import logo from '../../../assets/search.svg';
 import Icon from '../Icon/Icon';
 
 const SInputWrapper= styled.div`
@@ -43,7 +44,7 @@ const Input= props => {
     return (
         <SInputWrapper>
             <SIcon 
-            name= "search"
+            source= {logo}
             color= "#ccc"
             size= "3rem" />
             <SInput 

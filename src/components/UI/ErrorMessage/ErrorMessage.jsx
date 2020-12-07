@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography/Typography';
 import Icon from '../Icon/Icon';
+import logo from '../../../assets/warning.svg';
 import Button from '../Button/Button';
 import Backdrop from '../Backdrop/Backdrop';
 
@@ -111,7 +112,7 @@ const ErrorMessage= props => {
             }}>
                 <SIconWrapper>
                     <Icon
-                    name= 'warning'
+                    source= {logo}
                     color= 'white'
                     size= '7rem'
                     />

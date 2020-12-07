@@ -17,7 +17,7 @@ svg{
 const Icon= props => {
     return(
         <SReactSVG
-        src= {`/assets/${props.name}.svg`}
+        src= {props.source}
         color= {props.color}
         size= {props.size}
         transform= {props.transform}
