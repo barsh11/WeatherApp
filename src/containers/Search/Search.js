@@ -70,10 +70,6 @@ const Search = (props) => {
 
   const { onLocationChoice, init, onError } = props;
 
-  console.log('Search was rendered');
-  console.log(props);
-  console.log(results, isShown, isSearching);
-
   const initState = useCallback(() => {
     setSearchInput("");
     setResults([]);
