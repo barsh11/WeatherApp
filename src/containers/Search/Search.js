@@ -21,6 +21,8 @@ const SUl = styled.ul`
   font-size: 2rem;
   background-color: white;
   width: 60rem;
+  max-height: 60vh;
+  overflow: scroll;
   position: absolute;
   top: 8rem;
   margin: auto auto auto 4.5rem;
@@ -68,6 +70,10 @@ const Search = (props) => {
 
   const { onLocationChoice, init, onError } = props;
 
+  console.log('Search was rendered');
+  console.log(props);
+  console.log(results, isShown, isSearching);
+
   const initState = useCallback(() => {
     setSearchInput("");
     setResults([]);
@@ -82,9 +88,9 @@ const Search = (props) => {
     }
   }, [init, initState]);
 
-  const getState = useCallback((query, isActive) => {
+  const getState = useCallback(async (query, isActive) => {
       setIsSearching(true);
-      axios
+      await axios
         .get("", {
           params: { ...axios.params, q: query },
         })
@@ -110,7 +116,7 @@ const Search = (props) => {
     [onError]
   );
 
-  useEffect( () => {
+  useEffect(() => {
     let isActive = true;
 
     if (debouncedSearchInput) {
@@ -148,6 +154,7 @@ const Search = (props) => {
         city: chosenLocation.LocalizedName,
         countryId: chosenLocation.Country.ID,
       });
+      setIsShown(false);
     }
   };
 
@@ -165,7 +172,7 @@ const Search = (props) => {
         ))}
       </SUl>
     );
-  } else if (isSearching) {
+  } else if (isSearching || searchInput) {
     content = (
       <SUl>
         <SLi>
