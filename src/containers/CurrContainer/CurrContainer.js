@@ -4,7 +4,7 @@ import _ from "lodash";
 import { getIconSrc } from "../../utilities/getIconSrc";
 import CurrConditions from "../../components/CurrConditions/CurrConditions";
 
-const CurrManager = (props) => {
+const CurrContainer = (props) => {
   const [temperature, setTemperature] = useState("");
   const [description, setDescription] = useState("");
   const [iconNumber, setIconNumber] = useState(null);
@@ -29,8 +29,8 @@ const CurrManager = (props) => {
             setIconNumber(results.WeatherIcon);
           }
         })
-        .catch((err) => {
-          onError(err);
+        .catch((error) => {
+          onError(Object.getOwnPropertyDescriptor(error, 'message').value);
           return [];
         });
     },
@@ -68,4 +68,4 @@ const CurrManager = (props) => {
   );
 };
 
-export default CurrManager;
+export default CurrContainer;

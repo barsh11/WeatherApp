@@ -21,7 +21,7 @@ const toLocalTime = (ISO8601String) => {
   return moment(utcDate).local().format("HH:mm");
 };
 
-const ForcastManager = (props) => {
+const ForecastContainer = (props) => {
   const [results, setResults] = useState([]);
 
   const { locationKey, onError } = props;
@@ -48,8 +48,8 @@ const ForcastManager = (props) => {
             setResults(forecastResults);
           }
         })
-        .catch((err) => {
-          onError(err);
+        .catch((error) => {
+          onError(Object.getOwnPropertyDescriptor(error, 'message').value);
           return [];
         });
     },
@@ -76,4 +76,4 @@ const ForcastManager = (props) => {
   return <Forecast className={props.className} data={results} />;
 };
 
-export default ForcastManager;
+export default ForecastContainer;

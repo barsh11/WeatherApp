@@ -104,8 +104,9 @@ const Search = (props) => {
             setIsSearching(false);
           }
         })
-        .catch((err) => {
-          onError(err);
+        .catch((error) => {
+          console.log(Object.getOwnPropertyDescriptor(error, 'message').value);
+          onError(Object.getOwnPropertyDescriptor(error, 'message').value);
           return [];
         });
     },
@@ -132,9 +133,8 @@ const Search = (props) => {
   useEffect(() => {
     if (location) {
       onLocationChoice(location);
-      initState();
     }
-  }, [location, onLocationChoice, initState]);
+  }, [location, onLocationChoice]);
 
   useEffect(() => {
     if (!isShown) {

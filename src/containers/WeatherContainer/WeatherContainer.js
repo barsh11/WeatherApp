@@ -84,9 +84,9 @@ const WeatherContainer = (props) => {
     setCountry(locationData ? locationData.countryId : "");
   };
 
-  const onErrorHandler = (err) => {
+  const onErrorHandler = (errMsg) => {
     if (!error.isError) {
-      setError({ isError: true, message: err?.message });
+      setError({ isError: true, message: errMsg });
     }
   };
 

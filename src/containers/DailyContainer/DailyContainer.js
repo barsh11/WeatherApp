@@ -14,7 +14,7 @@ const toLocalTime = (ISO8601String) => {
   return moment(utcDate).local().format("HH:mm");
 };
 
-const DailyManager = (props) => {
+const DailyContainer = (props) => {
   const [sunrise, setSunrise] = useState("");
   const [sunset, setSunset] = useState("");
   const [lowTemperature, setLowTemperature] = useState("");
@@ -38,6 +38,7 @@ const DailyManager = (props) => {
       axios
         .get(`${query}`)
         .then((res) => {
+          
           const results = _.cloneDeep(res.data.DailyForecasts[0]);
 
           const sunriseTime = results.Sun.Rise;
@@ -51,8 +52,8 @@ const DailyManager = (props) => {
             setWind(results.Day.Wind.Speed.Value);
           }
         })
-        .catch((err) => {
-          onError(err);
+        .catch((error) => { 
+          onError(Object.getOwnPropertyDescriptor(error, 'message').value);
           return [];
         });
     },
@@ -91,4 +92,4 @@ const DailyManager = (props) => {
   );
 };
 
-export default DailyManager;
+export default DailyContainer;
