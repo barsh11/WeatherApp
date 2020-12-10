@@ -7,6 +7,9 @@ import Input from "../../components/UI/Input/Input";
 import Loader from "../../components/UI/Loader/Loader";
 
 const SSearch = styled.form`
+  grid-row: 1 / span 1;
+  grid-column: 1 / -1;
+
   min-width: 80%;
 
   display: flex;
@@ -84,7 +87,8 @@ const Search = (props) => {
     }
   }, [init, initState]);
 
-  const getState = useCallback(async (query, isActive) => {
+  const getState = useCallback(
+    async (query, isActive) => {
       setIsSearching(true);
       await axios
         .get("", {
@@ -105,8 +109,8 @@ const Search = (props) => {
           }
         })
         .catch((error) => {
-          console.log(Object.getOwnPropertyDescriptor(error, 'message').value);
-          onError(Object.getOwnPropertyDescriptor(error, 'message').value);
+          console.log(Object.getOwnPropertyDescriptor(error, "message").value);
+          onError(Object.getOwnPropertyDescriptor(error, "message").value);
           return [];
         });
     },
@@ -138,7 +142,7 @@ const Search = (props) => {
 
   useEffect(() => {
     if (!isShown) {
-        setSearchInput("");
+      setSearchInput("");
     }
   }, [isShown]);
 

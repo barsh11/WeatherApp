@@ -34,42 +34,6 @@ height: 100%;
   }
 `;
 
-const SSearch = styled(Search)`
-  grid-row: 1 / span 1;
-  grid-column: 1 / -1;
-`;
-
-const SCurrContainer = styled(CurrContainer)`
-  grid-row: 2 / span 1;
-  grid-column: 1 / span 1;
-
-  justify-self: center;
-
-  @media only screen and (max-width: 56.25em) {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
-`;
-
-const SDailyContainer = styled(DailyContainer)`
-  grid-row: 2 / span 1;
-  grid-column: 2 / span 1;
-
-  @media only screen and (max-width: 56.25em) {
-    grid-row: 3 / span 1;
-    grid-column: 1 / -1;
-  }
-`;
-
-const SForecastContainer = styled(ForecastContainer)`
-  grid-row: 3 / -1;
-  grid-column: 1 / -1;
-
-  @media only screen and (max-width: 56.25em) {
-    grid-row: 4 / -1;
-  }
-`;
-
 const WeatherContainer = (props) => {
   const [error, setError] = useState({ isError: false, message: "" });
   const [locationKey, setLocationKey] = useState("");
@@ -99,7 +63,7 @@ const WeatherContainer = (props) => {
 
   return (
     <SWeatherContainer>
-      <SSearch
+      <Search
         onLocationChoice={onLocationChoiceHandler}
         init={error.isError}
         onError={onErrorHandler}
@@ -112,7 +76,7 @@ const WeatherContainer = (props) => {
         />
       ) : !locationKey ? null : (
         [
-          <SCurrContainer
+          <CurrContainer
             onError={onErrorHandler}
             key={"CurrContainer"}
             locationKey={!error.isError ? locationKey : null}
@@ -123,12 +87,12 @@ const WeatherContainer = (props) => {
               }
             }
           />,
-          <SDailyContainer
+          <DailyContainer
             onError={onErrorHandler}
             key={"DailyContainer"}
             locationKey={locationKey}
           />,
-          <SForecastContainer
+          <ForecastContainer
             onError={onErrorHandler}
             key={"ForecastContainer"}
             locationKey={locationKey}

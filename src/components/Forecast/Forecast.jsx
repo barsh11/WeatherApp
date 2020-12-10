@@ -4,6 +4,13 @@ import Typography from '../UI/Typography/Typography';
 import ForecastItem from '../ForecastItem/ForecastItem';
 
 const SForecastWrapper= styled.div`
+    grid-row: 3 / -1;
+    grid-column: 1 / -1;
+
+    @media only screen and (max-width: 56.25em) {
+    grid-row: 4 / -1;
+    }
+
     display: flex;
     flex-direction: column;
 
