@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Search from "../Search/Search";
 import { SWeatherContainer } from './WeatherContainerStyle';
 import CurrContainer from "../CurrContainer/CurrContainer";
@@ -13,9 +13,9 @@ const WeatherContainer = (props) => {
   const [country, setCountry] = useState("");
 
   const onLocationChoiceHandler = (locationData) => {
-    setLocationKey(locationData ? locationData.locationKey : "");
-    setCity(locationData ? locationData.city : "");
-    setCountry(locationData ? locationData.countryId : "");
+    setLocationKey(locationData?.locationKey || "");
+    setCity(locationData?.city || "");
+    setCountry(locationData?.countryId || "");
   };
 
   const onErrorHandler = (errMsg) => {

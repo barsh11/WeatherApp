@@ -53,7 +53,6 @@ const Search = (props) => {
           }
         })
         .catch((error) => {
-          console.log(Object.getOwnPropertyDescriptor(error, "message").value);
           onError(Object.getOwnPropertyDescriptor(error, "message").value);
         });
     },
@@ -103,7 +102,7 @@ const Search = (props) => {
 
   let content;
 
-  if (results.length > 0 && !isSearching) {
+  if (results.length && !isSearching) {
     content = (
       <SUl>
         {results.map((el, i) => (
