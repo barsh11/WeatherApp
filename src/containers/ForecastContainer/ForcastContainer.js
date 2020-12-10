@@ -50,7 +50,6 @@ const ForecastContainer = (props) => {
         })
         .catch((error) => {
           onError(Object.getOwnPropertyDescriptor(error, 'message').value);
-          return [];
         });
     },
     [onError]

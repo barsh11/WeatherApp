@@ -12,8 +12,6 @@ const WeatherContainer = (props) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
-  useEffect(() => {}, [error.isError]);
-
   const onLocationChoiceHandler = (locationData) => {
     setLocationKey(locationData ? locationData.locationKey : "");
     setCity(locationData ? locationData.city : "");

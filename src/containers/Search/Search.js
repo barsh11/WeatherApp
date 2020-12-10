@@ -55,7 +55,6 @@ const Search = (props) => {
         .catch((error) => {
           console.log(Object.getOwnPropertyDescriptor(error, "message").value);
           onError(Object.getOwnPropertyDescriptor(error, "message").value);
-          return [];
         });
     },
     [onError]
