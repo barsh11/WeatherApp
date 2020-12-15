@@ -35,7 +35,7 @@ const WeatherContainer = (props) => {
 
   return (
     <SWeatherContainer>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div> </div>}>
       <Search
         onLocationChoice={onLocationChoiceHandler}
         init={error.isError}
