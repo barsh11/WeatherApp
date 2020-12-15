@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import Search from "../Search/Search";
+import React, { Suspense, useState } from "react";
 import { SWeatherContainer } from './WeatherContainerStyle';
-import CurrContainer from "../CurrContainer/CurrContainer";
-import DailyContainer from "../DailyContainer/DailyContainer";
-import ForecastContainer from "../ForecastContainer/ForcastContainer";
-import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
+
+const Search= React.lazy(() => import('../Search/Search'));
+const CurrContainer= React.lazy(() => import('../CurrContainer/CurrContainer'));
+const DailyContainer= React.lazy(() => import('../DailyContainer/DailyContainer'));
+const ForecastContainer= React.lazy(() => import('../ForecastContainer/ForcastContainer'));
+const ErrorMessage= React.lazy(() => import('../../components/UI/ErrorMessage/ErrorMessage'));
+
 
 const WeatherContainer = (props) => {
   const [error, setError] = useState({ isError: false, message: "" });
@@ -33,6 +35,7 @@ const WeatherContainer = (props) => {
 
   return (
     <SWeatherContainer>
+      <Suspense fallback={<div>Loading...</div>}>
       <Search
         onLocationChoice={onLocationChoiceHandler}
         init={error.isError}
@@ -69,6 +72,7 @@ const WeatherContainer = (props) => {
           />,
         ]
       )}
+      </Suspense>
     </SWeatherContainer>
   );
 };

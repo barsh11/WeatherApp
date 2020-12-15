@@ -14,10 +14,6 @@ const SInputWrapper= styled.div`
     }
 `;
 
-const SLabel= styled.label`
-    display: none;
-`;
-
 const SInput= styled.input`
     border: none;
     
@@ -51,10 +47,8 @@ const Input= props => {
             source= {logo}
             color= "#ccc"
             size= "3rem" />
-            <SLabel 
-            for= "accessibilityCity"/>
-            <SInput 
-            id= "accessibilityCity"
+]            <SInput 
+            aria-label= "Search"
             placeholder= "Search for a city..."
             type= "search"
             onChange= {props.changed}
