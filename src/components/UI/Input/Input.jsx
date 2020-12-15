@@ -52,9 +52,9 @@ const Input= props => {
             color= "#ccc"
             size= "3rem" />
             <SLabel 
-            id= "accessibilityLabelCity"/>
+            for= "accessibilityCity"/>
             <SInput 
-            aria-labelledby= "accessibilityLabelCity"
+            id= "accessibilityCity"
             placeholder= "Search for a city..."
             type= "search"
             onChange= {props.changed}
