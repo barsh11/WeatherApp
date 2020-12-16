@@ -5,7 +5,7 @@
   <h3 align="center">Weather App</h3>
 
   <p align="center">
-    A weather app tool for your chosen city!
+    A weather preditction tool for your chosen city!
     <br />
     <a href="https://github.com/barsh11/WeatherApp"><strong>Explore the docs »</strong></a>
     <br />
@@ -48,9 +48,12 @@
 
 <img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/weatherapp.png?raw=true" width="800px" />
 
-This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast for 12 hours ahead.
 
-check out my lighthouse test scores:
+This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast for 12 hours ahead. <br />
+Just type in a city of your choice and choose from the autocomplete suggestions field the desired location.
+<br />
+<br />
+also, check out my lighthouse test scores:
 
 <img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/lighthouse.png?raw=true" width="600px" />
 
