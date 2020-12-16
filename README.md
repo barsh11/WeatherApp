@@ -1,9 +1,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/barsh11/WeatherApp">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Weather App</h3>
 
@@ -49,7 +46,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/weatherapp.png?raw=true" width="800px" />
+
+This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast for 12 hours ahead.
+
+check out my lighthouse test scores:
+
+<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/lighthouse.png?raw=true" width="600px" />
 
 
 ### Built With
@@ -63,11 +66,6 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
-This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast of 12 hours ahead.
-
-check out my lighthouse test scores:
-
-
 To get a local copy up and running follow these simple steps.
 
 ### Installation
