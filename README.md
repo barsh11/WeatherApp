@@ -1,23 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/barsh11/WeatherApp">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Weather App</h3>
 
   <p align="center">
-    project_description
+    A weather app tool for your chosen city!
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/barsh11/WeatherApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/barsh11/WeatherApp">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/barsh11/WeatherApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/barsh11/WeatherApp/issues">Request Feature</a>
   </p>
 </p>
 
@@ -36,16 +36,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -56,59 +51,40 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Storybook](https://storybook.js.org/)
+* [React](https://reactjs.org/)
+* [Styled-Components](https://styled-components.com/)
+* [moment](https://momentjs.com/)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
+This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast of 12 hours ahead.
+
+check out my lighthouse test scores:
+
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
 
-1. Clone the repo
+1. Get a free API Key at [https://developer.accuweather.com/](https://developer.accuweather.com/)
+2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/barsh11/WeatherApp.git
    ```
-2. Install NPM packages
+3. Install NPM packages
    ```sh
    npm install
    ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
+4. Enter your API in `src/constants/api.js`
+   ```JS
+   const API_KEY = 'ENTER YOUR API';
+   ```
 
 
 <!-- CONTRIBUTING -->
@@ -124,28 +100,10 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/barsh11/WeatherApp](https://github.com/barsh11/WeatherApp)
 
 
 
