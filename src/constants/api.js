@@ -1,5 +1,5 @@
 // API KEY
-export const API_KEY = "oJbB7AP9phsAdUXqkOtSMZpTavadhHay";
+export const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 // BASE URL
 export const BASE_URL = "https://dataservice.accuweather.com/";
