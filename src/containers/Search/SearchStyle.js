@@ -5,7 +5,6 @@ export const SSearch = styled.form`
   grid-column: 1 / -1;
 
   min-width: 80%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
