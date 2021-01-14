@@ -53,10 +53,10 @@ This app is an app to review and manage ones expenses and incomes.<br/> It inclu
 
 * [Storybook](https://storybook.js.org/)
 * [React](https://reactjs.org/)
-* [Styled-Components](https://styled-components.com/)
+* [styled-Components](https://styled-components.com/)
 * [moment](https://momentjs.com/)
 * [material-UI](https://material-ui.com/)
-* [apexcharts](https://apexcharts.com/)
+* [Apexcharts](https://apexcharts.com/)
 
 <!-- CONTACT -->
 ## Contact
