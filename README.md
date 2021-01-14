@@ -49,7 +49,7 @@ User interface specification:<br />
 <img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/UI.png?raw=true" width="300px" />
 <br /><br />
 Final Product:<br />
-<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/weather-app.png?raw=true" width="800px" />
+<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/weatherapp.png?raw=true" width="800px" />
 
 
 This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast for 12 hours ahead. <br />
