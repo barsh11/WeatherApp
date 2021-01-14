@@ -2,19 +2,19 @@
 <br />
 <p align="center">
 
-  <h3 align="center">Weather App</h3>
+  <h3 align="center">Budget App</h3>
 
   <p align="center">
-    A weather preditction tool for your chosen city!
+    A budget manager.
     <br />
-    <a href="https://github.com/barsh11/WeatherApp"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/barsh11/BudgetApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://barsh11.github.io/WeatherApp/">View Demo</a>
+    <a href="https://barsh11.github.io/BudgetApp/">View Demo</a>
     ·
-    <a href="https://github.com/barsh11/WeatherApp/issues">Report Bug</a>
+    <a href="https://github.com/barsh11/BudgetApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/barsh11/WeatherApp/issues">Request Feature</a>
+    <a href="https://github.com/barsh11/BudgetApp/issues">Request Feature</a>
   </p>
 </p>
 
@@ -22,18 +22,12 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -46,21 +40,14 @@
 ## About The Project
 
 User interface specification:<br />
-<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/UI.png?raw=true" width="300px" />
+<img src="https://github.com/barsh11/BudgetApp/blob/master/budgetapppics/UI.png?raw=true" width="300px" />
 <br /><br />
 Final Product:<br />
-<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/weatherapp.png?raw=true" width="800px" />
+<img src="https://github.com/barsh11/BudgetApp/blob/master/weatherapppics/budgetapp.png?raw=true" width="800px" />
 
-
-This app is an app to show current weather in chosen cities, daily conditions for current date and a forecast for 12 hours ahead. <br />
-To use this app you just need to type in a city of your choice and choose the desired location from the autocomplete suggestions field.
-<br />
-<br />
-
-check out my lighthouse test scores:
-
-<img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/lighthouse.png?raw=true" width="600px" />
-
+This app is an app to review and manage ones expenses and incomes.<br/> It includes info about incomes, expenses and cancelled transactions alongside basic statistics and user preferences such as global currency and favorites transactions.
+<br/>
+<br/>
 
 ### Built With
 
@@ -68,50 +55,27 @@ check out my lighthouse test scores:
 * [React](https://reactjs.org/)
 * [Styled-Components](https://styled-components.com/)
 * [moment](https://momentjs.com/)
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-To get a local copy up and running follow these simple steps.
-
-### Installation
-
-1. Get a free API Key at [https://developer.accuweather.com/](https://developer.accuweather.com/)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/barsh11/WeatherApp.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `src/constants/api.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+* [material-UI](https://material-ui.com/)
+* [apexcharts](https://apexcharts.com/)
 
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/barsh11/WeatherApp](https://github.com/barsh11/WeatherApp)
-
-
-
+Project Link: [https://github.com/barsh11/BudgetApp](https://github.com/barsh11/WeatherApp)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
