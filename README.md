@@ -45,10 +45,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-User interface specification:
-Project was designed according to the following specs:
+User interface specification:<br />
+Project was designed according to the following specs:<br />
 <img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/UI.png?raw=true" width="300px" />
-
+<br /><br />
 Final Product:
 <img src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/weatherapp.png?raw=true" width="800px" />
 
