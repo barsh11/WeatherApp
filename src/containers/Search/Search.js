@@ -10,8 +10,6 @@ const Search = (props) => {
   const [searchInput, setSearchInput] = useState("");
   const [results, setResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [location, setLocation] = useState(null);
-  const [isShown, setIsShown] = useState(false);
 
   const debouncedSearchInput = useDebounce(searchInput, 500);
 
@@ -19,10 +17,8 @@ const Search = (props) => {
 
   const initState = useCallback(() => {
     setSearchInput("");
-    setResults([]);
     setIsSearching(false);
-    setLocation(null);
-    setIsShown(false);
+    setResults([]);
   }, []);
 
   useEffect(() => {
@@ -31,33 +27,30 @@ const Search = (props) => {
     }
   }, [init, initState]);
 
-  const getState = useCallback(
-    async (query, isActive) => {
-      setIsSearching(true);
-      await axios
-        .get("", {
-          params: { ...axios.params, q: query },
-        })
-        .then((res) => {
-          let limitedResults = [];
-          const limit = 10;
-          for (let i = 0; i < limit; i++) {
-            if (res.data[i]) {
-              limitedResults[i] = _.cloneDeep(res.data[i]);
-            }
+  const getState = useCallback(async (query, isActive) => {
+    setIsSearching(true);
+    await axios
+      .get("", {
+        params: { ...axios.params, q: query },
+      })
+      .then((res) => {
+        let limitedResults = [];
+        const limit = 10;
+        for (let i = 0; i < limit; i++) {
+          if (res.data[i]) {
+            limitedResults[i] = _.cloneDeep(res.data[i]);
           }
-          if (isActive) {
-            setIsShown(true);
-            setResults(limitedResults);
-            setIsSearching(false);
-          }
-        })
-        .catch((error) => {
-          onError(Object.getOwnPropertyDescriptor(error, "message").value);
-        });
-    },
-    [onError]
-  );
+        }
+        if (isActive) {
+          setResults(limitedResults);
+          setIsSearching(false);
+        }
+      })
+      .catch((error) => {
+        onError(Object.getOwnPropertyDescriptor(error, "message").value);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     let isActive = true;
@@ -74,35 +67,24 @@ const Search = (props) => {
     return () => {
       isActive = false;
     };
-  }, [debouncedSearchInput, onError, getState, initState]);
-
-  useEffect(() => {
-    if (location) {
-      onLocationChoice(location);
-    }
-  }, [location, onLocationChoice]);
-
-  useEffect(() => {
-    if (!isShown) {
-      setSearchInput("");
-    }
-  }, [isShown]);
+  }, [debouncedSearchInput, getState, initState]);
 
   const clickHandler = (chosenLocationIndex) => {
-    if (results.length > 0) {
+    if (results.length) {
       const chosenLocation = { ...results[chosenLocationIndex] };
-      setLocation({
+      setSearchInput("");
+      setResults([]);
+      onLocationChoice({
         locationKey: chosenLocation.Key,
         city: chosenLocation.LocalizedName,
         countryId: chosenLocation.Country.ID,
       });
-      setIsShown(false);
     }
   };
 
   let content;
 
-  if (results.length && !isSearching) {
+  if (results.length) {
     content = (
       <SUl>
         {results.map((el, i) => (
@@ -114,7 +96,7 @@ const Search = (props) => {
         ))}
       </SUl>
     );
-  } else if (isSearching || searchInput) {
+  } else if (isSearching) {
     content = (
       <SUl>
         <SLi>
@@ -122,6 +104,8 @@ const Search = (props) => {
         </SLi>
       </SUl>
     );
+  } else {
+    content = null;
   }
 
   return (
@@ -130,7 +114,7 @@ const Search = (props) => {
         changed={(e) => setSearchInput(e.target.value)}
         value={searchInput}
       />
-      {isShown && content}
+      {content}
     </SSearch>
   );
 };

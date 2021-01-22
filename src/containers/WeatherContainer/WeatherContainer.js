@@ -1,12 +1,19 @@
 import React, { Suspense, useState } from "react";
-import { SWeatherContainer } from './WeatherContainerStyle';
+import { SWeatherContainer } from "./WeatherContainerStyle";
 
-const Search= React.lazy(() => import('../Search/Search'));
-const CurrContainer= React.lazy(() => import('../CurrContainer/CurrContainer'));
-const DailyContainer= React.lazy(() => import('../DailyContainer/DailyContainer'));
-const ForecastContainer= React.lazy(() => import('../ForecastContainer/ForcastContainer'));
-const ErrorMessage= React.lazy(() => import('../../components/UI/ErrorMessage/ErrorMessage'));
-
+const Search = React.lazy(() => import("../Search/Search"));
+const CurrContainer = React.lazy(() =>
+  import("../CurrContainer/CurrContainer")
+);
+const DailyContainer = React.lazy(() =>
+  import("../DailyContainer/DailyContainer")
+);
+const ForecastContainer = React.lazy(() =>
+  import("../ForecastContainer/ForcastContainer")
+);
+const ErrorMessage = React.lazy(() =>
+  import("../../components/UI/ErrorMessage/ErrorMessage")
+);
 
 const WeatherContainer = (props) => {
   const [error, setError] = useState({ isError: false, message: "" });
@@ -36,42 +43,42 @@ const WeatherContainer = (props) => {
   return (
     <SWeatherContainer>
       <Suspense fallback={<div> </div>}>
-      <Search
-        onLocationChoice={onLocationChoiceHandler}
-        init={error.isError}
-        onError={onErrorHandler}
-      />
-      {error.isError ? (
-        <ErrorMessage
-          show={true}
-          closeErrorMessage={confirmedErrorSolve}
-          message={error.message}
+        <Search
+          onLocationChoice={onLocationChoiceHandler}
+          init={error.isError}
+          onError={onErrorHandler}
         />
-      ) : !locationKey ? null : (
-        [
-          <CurrContainer
-            onError={onErrorHandler}
-            key={"CurrContainer"}
-            locationKey={!error.isError ? locationKey : null}
-            data={
-              locationKey && {
-                city: city,
-                country: country,
+        {error.isError ? (
+          <ErrorMessage
+            show={true}
+            closeErrorMessage={confirmedErrorSolve}
+            message={error.message}
+          />
+        ) : !locationKey ? null : (
+          [
+            <CurrContainer
+              onError={onErrorHandler}
+              key={"CurrContainer"}
+              locationKey={!error.isError ? locationKey : null}
+              data={
+                locationKey && {
+                  city: city,
+                  country: country,
+                }
               }
-            }
-          />,
-          <DailyContainer
-            onError={onErrorHandler}
-            key={"DailyContainer"}
-            locationKey={locationKey}
-          />,
-          <ForecastContainer
-            onError={onErrorHandler}
-            key={"ForecastContainer"}
-            locationKey={locationKey}
-          />,
-        ]
-      )}
+            />,
+            <DailyContainer
+              onError={onErrorHandler}
+              key={"DailyContainer"}
+              locationKey={locationKey}
+            />,
+            <ForecastContainer
+              onError={onErrorHandler}
+              key={"ForecastContainer"}
+              locationKey={locationKey}
+            />,
+          ]
+        )}
       </Suspense>
     </SWeatherContainer>
   );
