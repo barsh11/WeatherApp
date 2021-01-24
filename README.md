@@ -2,7 +2,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-
+  
+  <p align="center">
+<a align="center" href="https://youtu.be/c0qJdXjQ4EY" target="_blank"><img display="block" src="https://github.com/barsh11/WeatherApp/blob/master/weatherapppics/Video.png" 
+alt="App Video" width="280" height="200" textAlign="center" border="10"/></a>
+  </p>
+  
   <h3 align="center">Weather App</h3>
 
   <p align="center">
