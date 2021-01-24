@@ -16,7 +16,6 @@ alt="App Video" width="280" height="200" textAlign="center" border="10"/></a>
     <a href="https://github.com/barsh11/WeatherApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://barsh11.github.io/WeatherApp/">View Demo</a>
     ·
     <a href="https://github.com/barsh11/WeatherApp/issues">Report Bug</a>
     ·
